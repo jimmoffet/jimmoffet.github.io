@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<head>
+  <style>
+    body {
+      padding:0;
+      margin:0;
+      border:0;
+      outline:0;
+      overflow:hidden
+    }
+    canvas {
+      position: absolute;
+      top:0px;
+      left:0px;
+    }
+  </style>  
+</head>
+<body>
+
+  <canvas id=c></canvas>
+  
+  <script>
+    var c = document.querySelector("#c");
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
+    var S = Math.sin;
+    var C = Math.cos;
+    var T = Math.tan;
+
+    var w = window.innerWidth;
+    var h = window.innerHeight;
+
+    function R(r,g,b,a) {
+      a = a === undefined ? 1 : a;
+      return "rgba("+(r|0)+","+(g|0)+","+(b|0)+","+a+")";
+      };
+
+    var x = c.getContext("2d");
+    var time = 0;
+    var frame = 0;
+
+    function u(t) {
+       //c.width=2e3;for(i=9;i--;)for(j=9;j--;)x.beginPath(),x.arc(i*250+S(t*i)*99, j*99+C(t*j)*99,50,0,7),x.fillStyle=R(S(t*j)*999,0,99),x.fill()
+
+       c.width=2e3;for(i=8e3;i--;)p=3*t+i/9e3+i%4/.637,d=C(p)-S(p),d>0&&x.fillRect(999+149*S(p)+790*S(t+i/9e3+i%3*4.5),i/6-2,149*d,2/(d+1))
+      }
+
+    function loop() {
+      requestAnimationFrame(loop);
+      time = frame/60;
+      if(time * 60 | 0 == frame - 1){
+        time += 0.000001;
+      }
+      frame++;
+      try {
+        u(time);
+      } catch (e) {
+        throw e;
+      }
+    }
+
+    loop();
+    </script>
+</body>
