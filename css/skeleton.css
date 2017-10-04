@@ -416,53 +416,53 @@ there.
 @media (min-width: 1400px) {}
 
 
-/* Fonts
+/* https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 @font-face {
   font-family: 'Sofia Pro';
-  src: url('fonts/Mostardesign - Sofia Pro Regular.eot');
-  src: local('☺'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Mostardesign - Sofia Pro Regular.woff') format('woff'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Mostardesign - Sofia Pro Regular.ttf') format('truetype'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Mostardesign - Sofia Pro Regular.svg') format('svg');
+  src: url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Mostardesign - Sofia Pro Regular.eot');
+  src: local('☺'), url('../fonts/Mostardesign - Sofia Pro Regular.woff') format('woff'), url('../fonts/Mostardesign - Sofia Pro Regular.ttf') format('truetype'), url('../fonts/Mostardesign - Sofia Pro Regular.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Sofia Pro';
-  src: url('fonts/Mostardesign - Sofia Pro Bold.eot');
-  src: local('☺'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Mostardesign - Sofia Pro Bold.woff') format('woff'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Mostardesign - Sofia Pro Bold.ttf') format('truetype'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Mostardesign - Sofia Pro Bold.svg') format('svg');
+  src: url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Mostardesign - Sofia Pro Bold.eot');
+  src: local('☺'), url('../fonts/Mostardesign - Sofia Pro Bold.woff') format('woff'), url('../fonts/Mostardesign - Sofia Pro Bold.ttf') format('truetype'), url('../fonts/Mostardesign - Sofia Pro Bold.svg') format('svg');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Roboto Mono';
-  src: url('fonts/RobotoMono-Regular.eot');
-  src: local('☺'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/RobotoMono-Regular.woff') format('woff'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/RobotoMono-Regular.ttf') format('truetype'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/RobotoMono-Regular.svg') format('svg');
+  src: url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/RobotoMono-Regular.eot');
+  src: local('☺'), url('../fonts/RobotoMono-Regular.woff') format('woff'), url('../fonts/RobotoMono-Regular.ttf') format('truetype'), url('../fonts/RobotoMono-Regular.svg') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Roboto Mono';
-  src: url('fonts/RobotoMono-Medium.eot');
-  src: local('☺'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/RobotoMono-Medium.woff') format('woff'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/RobotoMono-Medium.ttf') format('truetype'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/RobotoMono-Medium.svg') format('svg');
+  src: url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/RobotoMono-Medium.eot');
+  src: local('☺'), url('../fonts/RobotoMono-Medium.woff') format('woff'), url('../fonts/RobotoMono-Medium.ttf') format('truetype'), url('../fonts/RobotoMono-Medium.svg') format('svg');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Simplon Mono';
-  src: url('fonts/Simplon-Mono-Regular.eot');
-  src: local('☺'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Simplon-Mono-Regular.woff') format('woff'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Simplon-Mono-Regular.ttf') format('truetype'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Simplon-Mono-Regular.svg') format('svg');
+  src: url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Simplon-Mono-Regular.eot');
+  src: local('☺'), url('../fonts/Simplon-Mono-Regular.woff') format('woff'), url('../fonts/Simplon-Mono-Regular.ttf') format('truetype'), url('../fonts/Simplon-Mono-Regular.svg') format('svg');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Simplon Mono';
-  src: url('fonts/Simplon-Mono-Medium.eot');
-  src: local('☺'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Simplon-Mono-Medium.woff') format('woff'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Simplon-Mono-Medium.ttf') format('truetype'), url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Simplon-Mono-Medium.svg') format('svg');
+  src: url('https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/fonts/Simplon-Mono-Medium.eot');
+  src: local('☺'), url('../fonts/Simplon-Mono-Medium.woff') format('woff'), url('../fonts/Simplon-Mono-Medium.ttf') format('truetype'), url('../fonts/Simplon-Mono-Medium.svg') format('svg');
   font-weight: 500;
   font-style: normal;
 }
