@@ -1,6 +1,9 @@
 
 <!DOCTYPE html>
 <head>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/style.css">
   <style>
     [role="progressbar"] {
   position: relative;
@@ -18,7 +21,7 @@
   border-radius: 1px;
   -webkit-transform-origin: 50% 100%;
           transform-origin: 50% 100%;
-  background-color: #fff;
+  background-color: #000;
   -webkit-animation: bar linear 2.8s infinite;
           animation: bar linear 2.8s infinite;
   will-change: transform;
@@ -178,27 +181,9 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-font-smoothing: antialiased;
-  background-color: #1a6aaf;
+  background-color: #fff;
 }
 
-a {
-  display: inline-block;
-  color: #fff;
-  text-decoration: none;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
-  -webkit-transition: border-color ease-out 0.15s;
-  transition: border-color ease-out 0.15s;
-}
-a:focus, a:hover {
-  border-bottom-color: #fff;
-}
-
-p {
-  margin-top: 40px;
-  color: #fff;
-  font-size: 14px;
-  font-family: Avenir Next, Helvetica Neue, Helvetica, sans-serif;
-}
 
 [role="progressbar"] {
   margin: 0 auto;
@@ -218,7 +203,10 @@ p {
     <li role="presentation"></li>
     <li role="presentation"></li>
   </ul>
-  <p>404 Error... Sorry!</p>
+  <div style="text-align: center;">
+  <h5><br>This is not a page.</h5>
+  <h4 class="clerky-product"><a href="//jimmoffet.github.io">View My Portfolio</a></h4>
+  <div>
 </main>
 </body>
 </html>
