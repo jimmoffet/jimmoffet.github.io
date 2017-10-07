@@ -13,26 +13,68 @@
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   -->
   <!-- CSS ––––––––––––––––––––––––––––––––––––––––––––––-->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../../css/normalize.css">
+  <link rel="stylesheet" href="../../css/skeleton.css">
+  <link rel="stylesheet" href="../../css/style.css">
   <!-- Favicon ––––––––––––––––––––––––––––––––––––––––––––––-->
-  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="icon" type="image/png" href="../../images/favicon.png">
 
   <style>
-    video {
-      width: 700px;
-      box-shadow: 1px 1px 5px #111;
-    }
-  </style>
 
+    @media all and (max-width: 949px) {
+      .hidden-sm {
+        display: none;
+      }
+    }
+
+    @media all and (max-width: 767px) {
+      video {
+        margin-top:100px !important;
+        margin-bottom:13% !important;
+        width: 1400px;
+      }
+
+      img {
+        margin-top:100px !important;
+        margin-bottom:13% !important;
+        width: 1400px;
+      }
+      .project-intro-header {
+        margin-top:20px !important;
+      }
+      .intro-header {
+        margin-top:45px !important;
+      }
+    }
+
+    video {
+      margin-top:13%;
+      margin-bottom:7%;
+      width: 1400px;
+    }
+
+    img {
+      margin-top:13%;
+      margin-bottom:7%;
+      width: 1400px;
+    }
+
+    .row-credits {
+      margin-bottom: 0px;
+    }
+
+    .project-credits {
+      margin-top:0px;
+    }
+
+  </style>
 
 </head>
 <body>
   <!-- Primary Page Layout ––––––––––––––––––––––––––––––––––––––––––––––––––-->
   <div class="container">
     <div class="nav">
-      <a class="anicontainer" href="#">James David Moffet,&nbsp;<div class="anicontainer"><span class="title1">Technologist</span><span class="title2">Designer</span><span class="title3">Engineer</span><span class="title4">Researcher</span></div></a>
+      <a class="anicontainer" href="../../">James David Moffet,&nbsp;<div class="anicontainer"><span class="title1">Technologist</span><span class="title2">Designer</span><span class="title3">Engineer</span><span class="title4">Researcher</span></div></a>
     </div>
     <div class="intro">
       <div class="row">
@@ -97,22 +139,24 @@
 <!-- Row Divider ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
 
     <div class="row">
-
-      <div class="one-half column thumbnail-container">
-        <a class="thumbnail-title" href="http://openlabproject.org/" target="_blank">
-          <h2>OpenLab Public Design Workshops</h2>
-          <p class="info">Design Research, Education, Prototyping, UI/UX</p>
-        </a>
-        <img class="thumbnail-image thumbnail-video" style="box-shadow: none !important;" src="images/openlab/Thumbnail.png" srcset="images/openlab/Thumbnail@2x.png 2x">
+      <div class="twelve columns">
+        <h1 class="project-intro-header">Apps</h1>
       </div>
+    </div>
 
-      <div class="one-half column thumbnail-container">
-        <a class="thumbnail-title" href="projects/mapping.html">
+<!-- Row Divider ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+
+    <div class="row">
+
+      <div class="thumbnail-container">
+        <a class="thumbnail-title" href="../../projects/mapping.html">
+
           <h2>Democracy Action Mapping</h2>
-          <p class="info">Research, Data Visualization, UI/UX, Web Mapping</p>
+          <p class="info">Share maps layers as easily as links</p>
+
         </a>
-        <a href="projects/mapping.html" class="thumbnail-image" >
-          <video class="thumbnail-image thumbnail-video" src="https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/images/mapping/trailer.webm" playsinline loop muted autoplay>Your browser does not support HTML5 video.</video>
+        <a href="../../projects/mapping.html">
+          <video src="https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/images/mapping/trailer.webm" playsinline loop muted autoplay>Your browser does not support HTML5 video.</video>
         </a>
       </div>
 
@@ -122,45 +166,31 @@
 
     <div class="row">
 
-      <div class="one-half column thumbnail-container">
-        <a class="thumbnail-title" href="projects/chatbot.html">
-          <h2>SMS ChatBot Platform</h2>
-          <p class="info">Design Research, App Design, UI/UX, AI</p>  
+      <div class="thumbnail-container">
+        <a class="thumbnail-title" href="../../projects/chatbot.html">
+
+          <h2>VoteBot SMS Platform</h2>
+          <p class="info">A civic engagement bot that can be deployed for ~free in an afternoon</p>  
+
         </a>
-        <img class="thumbnail-image thumbnail-video" src="images/chatbot/hello.gif" srcset="images/chatbot/hello@2x.gif 2x">
+        <a href="../../projects/chatbot.html">
+          <img  src="../../images/chatbot/hello.gif" srcset="../../images/chatbot/hello@2x.gif 2x">
+        </a>
       </div>
 
-      <div class="one-half column thumbnail-container">
-        <a class="thumbnail-title" href="projects/seiu.html">
+    </div>
+
+<!-- Row Divider ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+
+    <div class="row">
+
+      <div class="thumbnail-container">
+        <a class="thumbnail-title" href="../../projects/seiu.html">
           <h2>Full Stack Design and Development</h2>
           <p class="info">Design Research, Product Design, Full-Stack Development, Project Management</p>
         </a>
-        <img class="thumbnail-image thumbnail-video" style="box-shadow:none !important" src="images/seiu/Thumbnail_crop.png" srcset="images/seiu/Thumbnail_crop_2x.png 2x">
-      </div>
-
-    </div>
-
-<!-- Row Divider ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
-
-    <div class="row">
-
-      <div class="one-half column thumbnail-container">
-        <a class="thumbnail-title" href="projects/parallax.html">
-          <h2>Project Parallax</h2>
-          <p class="info">Machine Vision, Hardware, Software, UI/UX, Design Research</p>
-        </a>
-        <a href="projects/parallax.html">
-          <video class="thumbnail-video" src="images/parallax/final.webm" playsinline loop muted autoplay>Your browser does not support HTML5 video.</video>
-        </a>
-      </div>
-
-      <div class="one-half column thumbnail-container">
-        <a class="thumbnail-title" href="projects/smartfabric.html">
-          <h2>Smart Fabric</h2>
-          <p class="info">Materials Engineering, Embedded Hardware, Tangible UI, IoT, Design Research</p>
-        </a>
-        <a href="projects/smartfabric.html">
-          <video class="thumbnail-video" src="https://s3.us-east-2.amazonaws.com/jamesdavidmoffetportfolio/images/smartfabric/wavy-nosound.webm" playsinline loop muted autoplay>Your browser does not support HTML5 video.</video>
+        <a href="../../projects/seiu.html">
+          <img  style="box-shadow:none !important" src="../../images/seiu/Thumbnail_crop.png" srcset="../../images/seiu/Thumbnail_crop_2x.png 2x">
         </a>
       </div>
 
@@ -171,20 +201,14 @@
 
     <div class="row">
 
-      <div class="one-half column thumbnail-container">
-        <a class="thumbnail-title" href="https://youtu.be/wz0_HZ-cArY" target="_blank">
-          <h2>Big Data for Social Good Talk</h2>
-          <p class="info">Research, HVG Smart Data Conference</p>
-        </a>
-        <img class="thumbnail-image thumbnail-video" style="box-shadow: 1px 1px 3px #444;" src="images/bigdata/Thumbnail.png" srcset="images/bigdata/Thumbnail@2x.png 2x">
-      </div>
-
-      <div class="one-half column thumbnail-container">
-        <a class="thumbnail-title" href="projects/criticalmass.html">
+      <div class="thumbnail-container">
+        <a class="thumbnail-title" href="../../projects/criticalmass.html">
           <h2>Critical Mass Mobile App</h2>
           <p class="info">Behavioral Design, Full Stack Web, UI/UX, Software</p>
         </a>
-        <img class="thumbnail-image thumbnail-video" style="box-shadow: none !important;" src="images/criticalmass/Thumbnail_crop.png" srcset="images/criticalmass/Thumbnail_crop@2x.png 2x">
+        <a href="../../projects/criticalmass.html">
+          <img  style="box-shadow: none !important;" src="../../images/criticalmass/Thumbnail_crop.png" srcset="../../images/criticalmass/Thumbnail_crop@2x.png 2x">
+        </a>
       </div>
 
     </div>
@@ -193,37 +217,81 @@
 
     <div class="row">
 
-      <div class="one-half column thumbnail-container">
-        <a class="thumbnail-title" href="projects/anykey.html">
-          <h2>Weibo Social Healthspaces</h2>
-          <p class="info">Big Data, Machine Learning, UI/UX, Public Health</p>
-        </a>
-        <img class="thumbnail-image thumbnail-video" src="images/anykey/Thumbnail.png" srcset="images/anykey/Thumbnail@2x.png 2x">
-      </div>
-
-      <div class="one-half column thumbnail-container">
-        <a class="thumbnail-title" href="projects/civic.html">
+      <div class="thumbnail-container">
+        <a class="thumbnail-title" href="../../projects/civic.html">
           <h2>Civic Interfaces</h2>
           <p class="info">Design Research, App Design, UI/UX</p>  
         </a>
-        <img class="thumbnail-image" src="images/civic/civicscreens_2x.gif" srcset="images/civic/civicscreens_2x.gif 2x">
+        <a href="../../projects/civic.html">
+          <img src="../../images/civic/paperprototype.jpg" srcset="../../images/civic/paperprototype.jpg">
+        </a>
       </div>
 
     </div>
 
 <!-- Row Divider ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
 
-    <div class="row row-footer">
+    <div class="row">
 
+      <div class="thumbnail-container">
+        <a class="thumbnail-title" href="../../projects/anykey.html">
+          <h2>Weibo Social Healthspaces</h2>
+          <p class="info">Big Data, Machine Learning, UI/UX, Public Health</p>
+        </a>
+        <a href="../../projects/anykey.html">
+          <img  src="../../images/anykey/Thumbnail.png" srcset="../../images/anykey/Thumbnail@2x.png 2x">
+        </a>
+      </div>
+
+    </div>
+
+<!-- Row Divider ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+
+    <div class="row row-credits project-credits">
+      <div class="three columns">
+        <p class="info">
+          <span class="info-title"></br>Collection Credits</span>
+          <br/>
+          Critical Mass: <br/>
+          Design|UIUX|Dev ~ James Moffet</br>
+          Design|UIUX ~ Morgan Starkey<br/> 
+          Design|UIUX ~ Alexander Tepper</br>
+          <br/>
+          All Else: James Moffet
+          
+        </p>
+      </div>
+      <div class="three columns">
+        <p class="info">
+          <span class="info-title"></br>Other Projects</span>
+          <br/>
+          <a href="openlab.html" target="_top">OpenLab Workshops</a><br/>
+          <a href="seiu.html" target="_top">End to End Design</a><br/>
+          <a href="https://www.youtube.com/watch?v=wz0_HZ-cArY&feature=youtu.be" target="_top">Big Data Talk</a><br/>
+          <a href="parallax.html" target="_top">Project Parallax</a><br/>
+          <a href="criticalmass.html" target="_top">Critical Mass App</a><br/>
+          <a href="civic.html" target="_top">Civic Interfaces</a><br/>
+          <a href="anykey.html" target="_top">Social Healthspaces</a><br/>
+          <a href="mapping.html" target="_top">Resistance Mapping</a><br/>
+        </p>
+      </div>
+      <div class="three columns">
+        <p class="info">
+          <span class="info-title"></br>Collections</span>
+          <br/>
+          <a href="collections/research" target="_top">Research</a><br/>
+          <a href="collections/hardware" target="_top">Hardware</a><br/>
+          <a href="collections/software" target="_top">Software</a><br/>
+          <a href="collections/apps" target="_top">Apps</a><br/>
+          <a href="collections/uiux" target="_top">UI/UX</a><br/>
+        </p>
+      </div>
+    </div>
+    <div class="row row-footer">
       <div class="twelve columns">
         <p class="info footer-text">
           <a href="mailto:jmoffetiii@gsd.harvard.edu" target="_top">jmoffetiii@gsd.harvard.edu</a><br/>
         </p>
       </div>
-
     </div>
-
   </div>
-<!-- End Document –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-</body>
-</html>
