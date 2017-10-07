@@ -200,7 +200,8 @@ p.thumbnail-title:hover  {
   position: fixed;
   top:0;
   width: 100%;
-  outline: 3px solid white;
+  outline: 4px solid white;
+  outline-offset:-1px;
   z-index: 1;
 }
 
