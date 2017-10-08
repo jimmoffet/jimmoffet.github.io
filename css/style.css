@@ -13,8 +13,33 @@
   animation-timing-function: ease;
   animation-duration: 8s;
   animation-delay: 0.0s;
-  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
   animation-iteration-count: infinite;
+  -webkit-animation-name: titleAnimation;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-duration: 8s;
+  -webkit-animation-delay: 0.0s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: titleAnimation;
+  -moz-animation-timing-function: ease;
+  -moz-animation-duration: 8s;
+  -moz-animation-delay: 0.0s;
+  -moz-animation-fill-mode: forwards;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-name: titleAnimation;
+  -ms-animation-timing-function: ease;
+  -ms-animation-duration: 8s;
+  -ms-animation-delay: 0.0s;
+  -ms-animation-fill-mode: forwards;
+  -ms-animation-iteration-count: infinite;
+  -o-animation-name: titleAnimation;
+  -o-animation-timing-function: ease;
+  -o-animation-duration: 8s;
+  -o-animation-delay: 0.0s;
+  -o-animation-fill-mode: forwards;
+  -o-animation-iteration-count: infinite;
+
 }
 
 .title2 {
@@ -26,8 +51,32 @@
   animation-timing-function: ease;
   animation-duration: 8s;
   animation-delay: 2s;
-  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
   animation-iteration-count: infinite;
+  -webkit-animation-name: titleAnimation;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-duration: 8s;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: titleAnimation;
+  -moz-animation-timing-function: ease;
+  -moz-animation-duration: 8s;
+  -moz-animation-delay: 2s;
+  -moz-animation-fill-mode: forwards;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-name: titleAnimation;
+  -ms-animation-timing-function: ease;
+  -ms-animation-duration: 8s;
+  -ms-animation-delay: 2s;
+  -ms-animation-fill-mode: forwards;
+  -ms-animation-iteration-count: infinite;
+  -o-animation-name: titleAnimation;
+  -o-animation-timing-function: ease;
+  -o-animation-duration: 8s;
+  -o-animation-delay: 2s;
+  -o-animation-fill-mode: forwards;
+  -o-animation-iteration-count: infinite;
 }
 
 .title3 {
@@ -40,8 +89,32 @@
   animation-timing-function: ease;
   animation-duration: 8s;
   animation-delay: 4s;
-  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
   animation-iteration-count: infinite;
+  -webkit-animation-name: titleAnimation;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-duration: 8s;
+  -webkit-animation-delay: 4s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: titleAnimation;
+  -moz-animation-timing-function: ease;
+  -moz-animation-duration: 8s;
+  -moz-animation-delay: 4s;
+  -moz-animation-fill-mode: forwards;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-name: titleAnimation;
+  -ms-animation-timing-function: ease;
+  -ms-animation-duration: 8s;
+  -ms-animation-delay: 4s;
+  -ms-animation-fill-mode: forwards;
+  -ms-animation-iteration-count: infinite;
+  -o-animation-name: titleAnimation;
+  -o-animation-timing-function: ease;
+  -o-animation-duration: 8s;
+  -o-animation-delay: 4s;
+  -o-animation-fill-mode: forwards;
+  -o-animation-iteration-count: infinite;
 }
 
 .title4 {
@@ -54,8 +127,32 @@
   animation-timing-function: ease;
   animation-duration: 8s;
   animation-delay: 6s;
-  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
   animation-iteration-count: infinite;
+  -webkit-animation-name: titleAnimation;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-duration: 8s;
+  -webkit-animation-delay: 6s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: titleAnimation;
+  -moz-animation-timing-function: ease;
+  -moz-animation-duration: 8s;
+  -moz-animation-delay: 6s;
+  -moz-animation-fill-mode: forwards;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-name: titleAnimation;
+  -ms-animation-timing-function: ease;
+  -ms-animation-duration: 8s;
+  -ms-animation-delay: 6s;
+  -ms-animation-fill-mode: forwards;
+  -ms-animation-iteration-count: infinite;
+  -o-animation-name: titleAnimation;
+  -o-animation-timing-function: ease;
+  -o-animation-duration: 8s;
+  -o-animation-delay: 6s;
+  -o-animation-fill-mode: forwards;
+  -o-animation-iteration-count: infinite;
 }
 
 @keyframes titleAnimation {
