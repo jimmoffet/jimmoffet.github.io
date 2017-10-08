@@ -203,6 +203,7 @@ p.thumbnail-title:hover  {
   outline: 4px solid white;
   outline-offset:-1px;
   z-index: 1;
+  opacity:0.97;
 }
 
 /*General*/
