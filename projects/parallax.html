@@ -13,10 +13,6 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="../css/normalize.css">
@@ -77,10 +73,24 @@
     </div>
     <div class="row">
       <div class="twelve columns">
-        <video src="../images/parallax/initialtest.webm" playsinline loop muted autoplay></video>
-        <video src="../images/parallax/parallax.webm" playsinline loop muted autoplay></video>
+
+        <video id='video' playsinline loop muted autoplay poster="../images/poster.png" >  
+          <source src='../images/parallax/initialtest.webm' />
+          <source src='../images/parallax/initialtest.mp4' />
+        </video>
+
+        <video id='video' playsinline loop muted autoplay poster="../images/poster.png" >  
+          <source src='../images/parallax/parallax.webm' />
+          <source src='../images/parallax/parallax.mp4' />
+        </video> 
+
         <img src="../images/parallax/eyesonthestreet.gif"/>
-        <video src="../images/parallax/final.webm" playsinline loop muted autoplay></video>
+
+        <video id='video' playsinline loop muted autoplay poster="../images/poster.png" > 
+          <source src='../images/parallax/final.webm' /> 
+          <source src='../images/parallax/final.mp4' />
+        </video> 
+
       </div>
     </div>
     <div class="row row-credits project-credits">
@@ -117,7 +127,7 @@
           <br/>
           <a href="collections/research" target="_top">Research</a><br/>
           <a href="collections/hardware" target="_top">Hardware</a><br/>
-          <a href="collections/software" target="_top">Software</a><br/>
+          
           <a href="collections/apps" target="_top">Apps</a><br/>
           <a href="collections/uiux" target="_top">UI/UX</a><br/>
         </p>
