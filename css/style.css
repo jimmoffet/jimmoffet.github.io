@@ -237,13 +237,27 @@ a:hover {
 
 .thumbnail-image {
   margin-bottom: 60px;
+  margin-top: 35%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.thumbnail-container:hover img {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .thumbnail-video {
   margin-bottom: 60px;
   margin-top: 35%;
-  box-shadow: 1px 1px 5px #111;
+  /*box-shadow: 1px 1px 5px #111;*/
   width: 700px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+
+video.thumbnail-video:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .thumbnail-gif {
