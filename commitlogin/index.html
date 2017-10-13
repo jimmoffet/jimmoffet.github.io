@@ -6,14 +6,25 @@
 <body>
 	<div id="fb-root"></div>
   <script>
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-      console.log(response.status);
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '2024489881171070',
+      cookie     : true,
+      xfbml      : true,
+      version    : '2.1'
     });
-  }
+      
+    FB.AppEvents.logPageView();  
 
-  
+    function checkLoginState() {
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+        console.log(response.status);
+      });
+    }
+
+      
+  };
 
   (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
