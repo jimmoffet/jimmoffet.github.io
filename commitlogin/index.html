@@ -8,7 +8,7 @@
   <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '{your-app-id}',
+      appId      : '2024489881171070',
       cookie     : true,
       xfbml      : true,
       version    : '{latest-api-version}'
@@ -32,14 +32,13 @@
       statusChangeCallback(response);
     });
   }
-  
+
+
+
 </script>
 
 
-<fb:login-button 
-  scope="public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button>
+<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true" data-auto-logout-link="false" data-use-continue-as="false"></div>
 
 </body>
 </html>
