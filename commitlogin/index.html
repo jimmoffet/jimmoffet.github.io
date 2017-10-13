@@ -11,7 +11,7 @@
       appId      : '2024489881171070',
       cookie     : true,
       xfbml      : true,
-      version    : '{latest-api-version}'
+      version    : '2.1'
     });
       
     FB.AppEvents.logPageView();  
@@ -30,6 +30,7 @@
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
+      console.log(response.status)
     });
   }
 
