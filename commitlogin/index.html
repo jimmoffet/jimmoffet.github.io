@@ -14,9 +14,7 @@
       version          : 'v2.10'
     });
     FB.AppEvents.logPageView();
-    FB.Event.subscribe('auth.login', function () {
-          window.location = "http://jamesdavidmoffet.com/commitland";
-      });
+
   };
 
   (function(d, s, id){
@@ -30,6 +28,7 @@
   FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
     console.log('Logged in.');
+    window.location = "http://jamesdavidmoffet.com/commitland";
   }
   else {
     FB.login();
