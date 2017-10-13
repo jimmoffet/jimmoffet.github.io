@@ -33,10 +33,6 @@
   }
 });
 
-  FB.Event.subscribe('auth.login', function () {
-          window.location = "http://jamesdavidmoffet.com/commitland";
-      });
-
   function checkLoginState() {
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
@@ -55,7 +51,8 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+<p>some funky jazz</p>
 
 </body>
 </html>
