@@ -16,12 +16,13 @@
       
     FB.AppEvents.logPageView();  
 
-    function checkLoginState() {
-      FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-        console.log(response.status);
-      });
-    }
+
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+      console.log(response.status);
+    });
+
+
 
       
   };
@@ -33,6 +34,8 @@
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=2024489881171070";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+
+
 
   
 
