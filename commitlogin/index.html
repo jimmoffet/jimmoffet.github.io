@@ -30,7 +30,7 @@
   function checkLoginState() {
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
-      console.log(response.status)
+      console.log(response.status);
     });
   }
 
@@ -39,7 +39,7 @@
 </script>
 
 
-<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true" data-auto-logout-link="false" data-use-continue-as="false"></div>
+<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true" data-auto-logout-link="false" data-use-continue-as="false" onlogin="checkLoginState();"></div>
 
 </body>
 </html>
