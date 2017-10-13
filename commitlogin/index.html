@@ -14,6 +14,15 @@
       version          : 'v2.10'
     });
     FB.AppEvents.logPageView();
+    FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    console.log('Logged in.');
+    
+  }
+  else {
+    FB.login();
+  }
+});
   };
 
   (function(d, s, id) {
