@@ -5,7 +5,7 @@
 </head>
 <body>
 	<div id="fb-root"></div>
-	<script>
+  <script>
   window.fbAsyncInit = function() {
     FB.init({
       appId            : '291281921373139',
@@ -14,7 +14,6 @@
       version          : 'v2.10'
     });
     FB.AppEvents.logPageView();
-
   };
 
   (function(d, s, id){
@@ -28,14 +27,11 @@
   FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
     console.log('Logged in.');
-    window.location = "http://jamesdavidmoffet.com/commitland";
   }
   else {
     FB.login();
   }
 });
-
-  
 
   function checkLoginState() {
   FB.getLoginStatus(function(response) {
