@@ -424,6 +424,10 @@ p.thumbnail-title:hover  {
     margin-top: 100px;
   }
 
+  h2 {
+    font-size: 9vw;
+  }
+
 }
 
 
@@ -490,7 +494,7 @@ p.thumbnail-title:hover  {
   }
 
   h2 {
-    font-size: 2.1em;
+    font-size: 9vw;
   }
 
   video {
