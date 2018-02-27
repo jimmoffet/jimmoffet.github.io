@@ -177,6 +177,14 @@
 
 /*Typography*/
 
+.toplinks {
+  margin: 90px 0 90px 0;
+}
+
+.hidden-sm {
+    display: none;
+  }
+
 p {
   margin-top: 0;
 }
@@ -196,7 +204,7 @@ p {
 }
 
 .intro-header {
-  margin: 90px 0;
+  margin: 90px 0 30px 0;
 }
 
 .project-intro-header {
@@ -364,6 +372,10 @@ p.thumbnail-title:hover  {
     margin-top:100px;
   }
 
+  .toplinks {
+    margin: 12vw 0 12vw 0;
+  }
+
 }
 
 @media all and (max-width: 767px) and (min-width: 351px) {
@@ -384,7 +396,7 @@ p.thumbnail-title:hover  {
   }
 
   .intro-header {
-    margin: 20px 0;
+    margin: 30px 0;
   }
 
   .clerky-product {
@@ -424,10 +436,18 @@ p.thumbnail-title:hover  {
     margin-top: 100px;
   }
 
+  
+
+}
+
+@media all and (max-width: 470px) {
   h2 {
     font-size: 9vw;
   }
 
+  h5.toplinks {
+    font-size: 9vw;
+  }
 }
 
 
@@ -475,7 +495,7 @@ p.thumbnail-title:hover  {
   }
 
   .intro-header{
-    margin: 90px 0px 0px 0px;
+    margin: 30px 0px;
   }
 
   .intro .row {
@@ -495,6 +515,14 @@ p.thumbnail-title:hover  {
 
   h2 {
     font-size: 9vw;
+  }
+
+  h5.toplinks {
+    font-size: 9vw;
+  }
+
+  .toplinks {
+    margin: 12vw 0 12vw 0;
   }
 
   video {
