@@ -31,6 +31,7 @@
       position: relative;
       height: 0;
       overflow: hidden;
+      margin: 8vh 0 8vh 0;
     }
      
     /* 16x9 Aspect Ratio */
@@ -50,6 +51,14 @@
       width: 100%;
       height: 100%;
     }
+
+    .winfo a {
+      border-bottom: 1px solid #ebebeb;
+    }
+
+    .winfo a:hover {
+      border-bottom: 2px solid #222;
+    }
   </style>
 
 </head>
@@ -57,7 +66,7 @@
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="container">
+  <div class="container" style="max-width: 1100px;">
     <div class="nav">
       <!-- <a href="../">James David Moffet</a> -->
       <a class="anicontainer" href="../">James David Moffet,&nbsp;<div class="anicontainer"><span class="title1">Technologist</span><span class="title2">Designer</span><span class="title3">Engineer</span><span class="title4">Researcher</span></div></a>
@@ -65,34 +74,38 @@
     <div>
       <div class="row">
         <div class="twelve columns">
-          <h1 class="project-intro-header">COMM!T GOTV App</h1>
+          <h1 class="project-intro-header">Outvote.io</h1>
           <h2>
-            GPS and Peer-enforced Civic Commitment App
+            Bringing word-of-mouth democracy back using SMS and AI
           </h2>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="twelve columns">
-        <h2 class="clerky-product">Visit <a href="http://www.commit.vote/r/41" target="_blank">Commit.Vote</a> to check out the MVP.</h2>
-        <img class="page-image" style="box-shadow: none;margin: auto; display: block; width: 100%; max-width:500px; margin-bottom: 50px; margin-top: 10px" src="../images/commit/login.jpg">
-        <img class="page-image" style="box-shadow: none;margin: auto; display: block; width: 100%; max-width:500px; margin-bottom: 50px; margin-top: 50px" src="../images/commit/commit.jpg">
-        <img class="page-gif" style="box-shadow: none;margin: auto; display: block; width: 100%; max-width:500px; margin-bottom: 50px; margin-top: 50px" src="../images/commit/map.jpg">
-        <img class="page-gif" style="box-shadow: none;margin: auto; display: block; width: 100%; max-width:500px; margin-bottom: 75px; margin-top: 50px" src="../images/commit/emaildebrief.png">
-        <h4>
-          The COMM!T app keeps people accountable to their friends by letting the friend who invited them know whether or not they checked in at the polls via GPS. COMM!T sends voters reminders with a checkin link that uses Google's Civic Data API to identify polling places for folks to check in. Once a user clicks "COMM!T" their referring friend will be notified on election of their checkin status and commitments cannot be revoked (we provide a few backup options at checkin that give users and their friends an opportunity to hash things out).
-          <br><br>
-          "We tell {Your Referring Friend} if you checked in at the polls.
-          <br><br>
-          Your vote matters more than you might think. Local elections are often won by tens of votes and local decisions directly impact you. Tomorrow, we'll send you a check-in link that will confirm your location, plus a few reminders. If you don't check in near a polling place, we'll send a simple message to {Your Referring Friend} that says you didn't check in. You can customize the messages that will be sent when you check in (or don't) using the "customize messages" link after you sign in. We'll have check in options for absentee and non-eligible voters. You'll also get to see how many folks you got to COMM!T. We keep all contact info confidential. Now, go for it!"
-          <br><br>
-          -Team COMM!T
-        </h4>
+
+        <div style="">
+          <div >
+            <div class="intrinsic-container intrinsic-container-16x9">
+              <iframe class=".intrinsic-container-16x9" src="//www.youtube.com/embed/VS8OQbXEq7Q" allowfullscreen></iframe>
+            </div>
+          </div>  
+        </div>
+
+        <h4>I've been with <a class="winfo" style="border-bottom: 2px solid #ebebeb; " href="//outvote.io">Outvote</a> since the November pilot and have since guided the team into the Harvard iLab accelerator, owned of product and user research, committed front-end and back-end code, pitched funders, built sales and growth outreach and conducted product demos.
+        <br><br>
+        Outvote seeks to bring democratic participation back to its roots, connecting people who know each via SMS and with a few suggestions from AI. We make it easy for folks to use their network to help candidates and issues they care about.
+        <br><br>
+        In our 2017 pilot, we discovered that 0.2% of the Cambridge population using Outvote had first-degree connections to more than half of Cambridge voters. Outvote makes it easy to send event invites, recruit volunteers, fundraise, and of course get out the vote, with a little bit of secret sauce to help decide who best to reach out to and when.
+        <br><br>
+        Users can coordinate directly with campaigns using existing outreach scripts and tools, or customize their own. They can also see the buzz in an activity feed and can chat with other campaigners who are currently active, creating a sense of co-presence and community momentum that is essential to sustained action.
+        <br><br>
+        Anyone can join Outvote and begin digitally supporting a campaign in less than 10 minutes.</h4>
       </div>
     </div>
     <div class="row row-credits project-credits">
       
-      <div class="one-half column">
+      <div class="one-third column">
         <p class="info">
           <span class="info-title"></br>Collections</span>
           <br/>
@@ -102,7 +115,7 @@
         </p>
       </div>
 
-      <div class="one-half column">
+      <div class="one-third column">
         <p class="info">
           <span class="info-title"></br>Collection Credits</span>
           <span class="info-title"></br>Boston FOIA Redesign</span>
@@ -131,6 +144,7 @@
           James Moffet
         </p>
       </div>
+    </div>
     <div class="row row-footer">
       <div class="twelve columns">
         <p class="info footer-text">
