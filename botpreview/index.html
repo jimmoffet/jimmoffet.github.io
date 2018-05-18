@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="OutvoteBot - built with botpreview.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OutvoteBot - built with botpreview.com</title>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background: #fff;
+        }
+        div.vcenter {
+            margin: 5vh auto 0;
+            height: 95vh;
+            width: 100%;
+            text-align: center;
+        }
+        div.iphone-wrapper {
+            display: inline-block;
+            width: auto;
+            height: 100%;
+            position: relative;
+        }
+        div.iphone-wrapper > img {
+            height: 100%;
+            width: auto;
+            display: block;
+        }
+        div.screen-content {
+            position: absolute;
+            top: 10.8985%;
+            bottom: 20%;
+            left: 14.65%;
+            right: 16.8%;
+            background: #000;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.rawgit.com/digitalbreed/jquery.fbmessenger/v0.0.9/dist/jquery.fbmessenger.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/digitalbreed/jquery.fbmessenger/v0.0.9/dist/jquery.fbmessenger.css">
+</head>
+<body>
+<div class="vcenter">
+    <div class="iphone-wrapper">
+        <img alt="iPhone" src="https://botpreview.com/assets/images/iphone6s-white.png" />
+        <div class="screen-content">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function() {
+        var now = new Date();
+        $('.screen-content').fbMessenger({
+            botName: 'OutvoteBot',
+            botBannerUrl: 'https://botpreview.com/api/image/wHT9',
+            botLogoUrl: 'https://botpreview.com/api/image/wHTc',
+            botWelcomeMessage: 'Welcome to Outvote - click to begin...',
+            likes: {
+                totalCount: 6345,
+                friendName: 'Naseem Makiya',
+                otherFriendsCount: 42
+            },
+            leftUser: 'left',
+            rightUser: 'right',
+            timeScale: 1,
+            locale: 'en',
+            displayedCarrier: 'o2-de',
+            persistentMenu: [{"label":"!!! <-- do stuff now","children":[{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]},{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]},{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]},{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]},{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]}]},{"label":"","children":[{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]},{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]},{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]},{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]},{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]}]},{"label":"","children":[{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]},{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]},{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]},{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]},{"label":"","children":[{"label":""},{"label":""},{"label":""},{"label":""},{"label":""}]}]}]
+        })
+        .fbMessenger('start', { delay: 2000, timestamp: now } )
+.fbMessenger('message', 'left', 'We crush terrible politicians with 50% part awesome technology, 50% a bit of your time, and 50% funky gifs:', { delay: 100, timestamp: now } )
+.fbMessenger('imageAttachment', 'left', 'https://botpreview.com/api/image/wHFg', { delay: 1000, timestamp: now } )
+.fbMessenger('message', 'right', 'Hah! ...but like, what?', { delay: 500, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 1000, timestamp: now } )
+.fbMessenger('message', 'left', 'The whole thing is pretty open ended. We say stuff, you make choices on how to act. Let\u2019s not forget that Trump won by a low number of votes, in just a couple states. Congress and local races are won by a handful of peeps. You should check Outvote daily - or else this shit happens:', { delay: 100, timestamp: now } )
+.fbMessenger('imageAttachment', 'left', 'https://botpreview.com/api/image/wHTA', { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'right', 'Okay, but now what?', { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'left', 'One more thing: you can always click the !!! at the bottom left and choose your own adventure: post today\u2019s social media, post extra social media, find candidates to support, suggest a rad candidate for promotion on Outvote, text voters, find like-minded people near you, flag a communication, etc. Click the !!! - bottom of the screen -\u00A0 click the !!! now', { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 2000, timestamp: now } )
+.fbMessenger('selectPersistentMenu', 0, { delay: 1000, timestamp: now } )
+.fbMessenger('showButtonTemplate', 'STUFF YOU CAN DO RIGHT NOW!!!', ['Post today\u2019s social media', 'Post extra social media', 'Suggest a rad candidate', 'Text voters', 'Find like-minded people near you', 'CONTINUE'], { delay: 1000, timestamp: now } )
+.fbMessenger('selectButtonTemplate', 5, { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'left', 'You did it. Ready to rock?', { delay: 1000, timestamp: now } )
+.fbMessenger('showButtonTemplate', '\u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 \u00A0 It\'s one or the other!', ['YES', 'VERY YES'], { delay: 1000, timestamp: now } )
+.fbMessenger('selectButtonTemplate', 1, { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'left', 'Briefing: Michael Avenetti (porn star Stormy Daniels\u2019 lawyer) says he has dirt connecting Trump, Qatar, Russia, and bribes. --insert more details here Lorum Ipsum--', { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('showButtonTemplate', '', ['Tell me more!', 'Share to social media', 'PASS'], { delay: 1000, timestamp: now } )
+.fbMessenger('selectButtonTemplate', 0, { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'left', 'Folks have been appreciating Mueller\u2019s work on the collusion\/obstruction of justice probe, with 5 high profile republican senators pledging in March to protect his work. Although nothing came of it, Mueller is going strong. What is surprising is Avenetti becoming the major national investigator in the Trump collusion case, on his own.', { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('showButtonTemplate', 'Collect one for your profile!', ['Avenetti \uD83D\uDC71\uD83C\uDFFB', 'Stormy \uD83D\uDC71\uD83C\uDFFB\u200D\u2640\uFE0F', 'Mueller \uD83D\uDC74\uD83C\uDFFB'], { delay: 1000, timestamp: now } )
+.fbMessenger('selectButtonTemplate', 2, { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'left', 'Nice!', { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('showQuickReplies', ['Share Badge & News', 'More News!', 'Swipe me'], { delay: 1000, timestamp: now } )
+.fbMessenger('selectQuickReply', 1, { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'left', 'Alright then, how about this...', { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'left', 'The lawyer who repped Equifax is set to regulate Equifax in a recent move by Trump. After the massive breach that exposed a jabillion people to the worst type of identity theft possible, Equifax admitted that it had been criminally negligent with your very, very personal data. Trump drained the swamp by giving them a get out of jail free card and a cushy government job to their fixer. ', { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('showQuickReplies', ['Seth Meyer\'s Video', 'What else is up?'], { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 2000, timestamp: now } )
+.fbMessenger('selectQuickReply', 1, { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'left', 'That\u2019s all the news. You pissed? We are too - we don\u2019t even try to give you the crazy stuff, America is actually like this. ', { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'left', 'Want to do something about it?', { delay: 1000, timestamp: now } )
+.fbMessenger('showQuickReplies', ['Heckin\' Yes!', 'Remind me in 2 hrs', 'Remind me tomorrow', 'Remind me in 1 week'], { delay: 1000, timestamp: now } )
+.fbMessenger('scrollQuickReplies', 3, { delay: 500, timestamp: now } )
+.fbMessenger('scrollQuickReplies', 0, { delay: 500, timestamp: now } )
+.fbMessenger('selectQuickReply', 0, { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'left', 'Ok, pick a category and a style below - we\u2019re going to text a voter in the super-tight *Juana Matias* campaign who wants to hear about that issue. They might text you back - we\u2019ll connect them to the campaign.', { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('showQuickReplies', ['Environment', 'Jobs', 'Minimum Wage'], { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('selectQuickReply', 2, { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('showQuickReplies', ['Serious', 'Snarky', 'Friendly'], { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('selectQuickReply', 0, { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'left', '--Randy Bryce is an iron worker, a single father, and a super human sent from Krypton to save us from Lex Luth...I mean Donald Trump. He\u2019s running in Paul Ryan\u2019s seat and he\u2019s kind of the future of politicians who care about people. He also believes in a $15 minimum wage, which actually helps employers retain talent and saves money in the long term - and gives workers more money to spend at businesses, growing small businesses and the economy.--', { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'left', 'Outvote has some major firepower, but you have to dig deep. Do you want access to the advanced features?', { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('showQuickReplies', ['Yes? What am I in for?', 'Whoa, you\u2019re coming on strong'], { delay: 1000, timestamp: now } )
+.fbMessenger('scrollQuickReplies', 1, { delay: 500, timestamp: now } )
+.fbMessenger('scrollQuickReplies', 0, { delay: 500, timestamp: now } )
+.fbMessenger('selectQuickReply', 0, { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'left', 'Here\u2019s the deal. Your friends aren\u2019t voting. You know it, they know it - and one of the top reasons why, studies show, is that no one asked. You know who\u2019s great at asking? --finger pointing out at viewer-- We basically want you to pick a candidate where you\u2019re at or where you have lots of friends and then text six friends. Outvote\u2019s founder won his first election by 6 votes and then put $30M into the arts in office.', { delay: 1000, timestamp: now } )
+.fbMessenger('showQuickReplies', ['Yes. Gotta do that.', 'Remind me daily', 'Remind me occasionally'], { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('selectQuickReply', 0, { delay: 1000, timestamp: now } )
+.fbMessenger('typingIndicator', { delay: 500, timestamp: now } )
+.fbMessenger('message', 'right', 'Off we go...', { delay: 1000, timestamp: now } )
+
+        .fbMessenger('run');
+
+        $('div.iphone-wrapper > img').load(function() {
+            $(window).trigger('resize');
+        });
+    });
+</script>
+</body>
+</html>
