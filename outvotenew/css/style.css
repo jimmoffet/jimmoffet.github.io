@@ -138,6 +138,16 @@ h6 {
     font-family: 'Lato', sans-serif;
     color: #323232;
     font-weight: 700;
+    margin-bottom: 4rem;
+}
+
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Lato', sans-serif;
+    color: #323232;
+    font-weight: 700;
     margin-bottom: 2rem;
 }
 
@@ -347,7 +357,10 @@ button:active,
 
 .dl-btn-wrapper {
     position: relative;
-    display: inline-block;
+    display: table;
+    /* width: 99%; */
+    margin: 0 auto;
+    padding-left: 6px;
 }
 
 .dl-btn {
@@ -604,8 +617,9 @@ button:active,
 }
 
 .section-padding {
-    padding-top: 110px;
-    padding-bottom: 110px;
+    /*padding-top: 110px;
+    padding-bottom: 110px;*/
+    padding: 7vw 0;
 }
 
 .img-center {
@@ -685,6 +699,7 @@ button:active,
 
 .icon-box-content {
     position: relative;
+    min-height: 180px;
 }
 
 .icon-box.left {
@@ -1244,6 +1259,7 @@ button.mfp-close:active:focus {
 
 .team-member {
     position: relative;
+    padding: 15px;
 }
 
 .team-img {
@@ -1558,8 +1574,8 @@ button.mfp-close:active:focus {
 }
 
 .news-preview {
-    padding: 24px;
-    background-color: #fafafa;
+    padding: 5px;
+    background-color: #fff;
     overflow: hidden;
 }
 
@@ -1577,6 +1593,7 @@ button.mfp-close:active:focus {
     margin-bottom: 10px;
     font-weight: 500;
     font-size: 13px;
+
 }
 
 .news-meta {
@@ -1584,6 +1601,7 @@ button.mfp-close:active:focus {
     border-top: 1px solid #EEF0F3;
     margin-top: 15px;
     padding-top: 15px;
+    display: none;
 }
 
 .news-meta .date {
@@ -1603,6 +1621,7 @@ button.mfp-close:active:focus {
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
+
 }
 
 .read-more a {
@@ -1746,7 +1765,7 @@ footer {
 
 @media (min-width: 1200px) {
     
-    .col-lg-2 {
+    .team {
         width: 20% !important;
     }
 
@@ -2063,8 +2082,8 @@ footer {
     .intro-content p {
         line-height: 1.5;
         padding: 0 5vw 5vw 5vw;
-        font-size: 1.9vw;
-        text-align: justify;
+        font-size: 18px;
+        text-align: left;
     }
 	
     .intro-mockup .img-one {
@@ -2095,7 +2114,7 @@ footer {
     .mockup-text {
         padding-top: 0;
         padding-bottom: 0;
-        text-align: center;
+        text-align: left;
         margin: 0 2vw;
     }   
 
@@ -2147,8 +2166,17 @@ footer {
         text-align-last: center;*/
     }
 
+    .icon-box-content {
+        position: relative;
+        min-height: auto;
+    }
+
     .over {
         margin: 0;
+    }
+
+    section#news.container {
+        margin: 0 8vw !important;
     }
 
     .video p {
