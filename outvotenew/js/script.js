@@ -366,12 +366,12 @@ $(document).ready(function () {
 	
     jQuery(function ($) {
 
-        $(".particle-bg").each(function (i, obj) {
-            $(this).css("background-image", 'url(' + $(this).data('image-src') + ')');
-            $(this).css("background-color", "#FFFFFF");
-            $(this).css("background-size", "cover");
-            $(this).css("background-position", "center center");
-        });
+        // $(".particle-bg").each(function (i, obj) {
+        //     $(this).css("background-image", 'url(' + $(this).data('image-src') + ')');
+        //     $(this).css("background-color", "#FFFFFF");
+        //     $(this).css("background-size", "cover");
+        //     $(this).css("background-position", "center center");
+        // });
 
         if ( isMobile.any() ) {
             document.documentElement.className = document.documentElement.className + " touch";

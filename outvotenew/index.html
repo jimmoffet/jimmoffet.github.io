@@ -143,7 +143,7 @@
 								<div class="intro-content wow fadeInUp" data-wow-delay="0.1s">
 								
 									<h1 class="text-white" >Friends don't let friends not vote.</h1>
-									<p class="font-alt text-white mb-25" style="line-height:1.5">Outvote is an app for getting your friends to vote. Outvote exists because your friends don't vote. Most of them want to, but they don't. They get busy. It's hard to make time. Friends that get reminders are twice as likely to vote. Outvote makes it easy to remind your friends to register and vote.</p>
+									<p class="font-alt text-white" style="line-height:1.5; margin-bottom: 4rem">Outvote is an app for getting your friends to vote. Outvote exists because your friends don't vote. Most of them want to, but they don't. They get busy. It's hard to make time. Friends that get reminders are twice as likely to vote. Outvote makes it easy to remind your friends to register and vote.</p>
 									
 									<!--=== start dl-btn ===-->
 									<div class="dl-btn-wrapper">
@@ -1484,9 +1484,6 @@
 		<!--ajaxchimp-->
 		<script src="plugins/jquery.ajaxchimp.js"></script>
 		
-		<!--particles-->
-		<!-- <script src="plugins/particles.js"></script>  -->
-		
 		<!--wow-->
 		<script src="plugins/wow.js"></script>
 		
@@ -1503,6 +1500,24 @@
 		<!-- theme script -->
 		<script src="js/newsletter.js"></script>
 		<script src="js/script.js"></script>
+		<script type="text/javascript">
+			$(function () {
+			  var lastScrollTop = 0;
+			  var $navbar = $('.header');
+			  $(window).scroll(function(event){
+			    var st = $(this).scrollTop();
+			    if (st > lastScrollTop) { // scroll down
+			      // use this is jQuery full is used
+			      $navbar.fadeOut()
+			      // use this if no effect is required
+			      // $navbar.hide();
+			    } else { // scroll up
+			      $navbar.fadeIn()
+			    }
+			    lastScrollTop = st;
+			  });
+			});
+		</script>
 		
 		
 	</body>
