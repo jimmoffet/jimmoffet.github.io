@@ -158,6 +158,25 @@
   -o-animation-iteration-count: infinite;
 }
 
+@-webkit-keyframes titleAnimation {
+  25% {
+    -webkit-transform:: rotateX(90deg);
+    opacity: 0;
+  }
+  20% {
+    -webkit-transform:: rotateX(0);
+    opacity: 1;
+  }
+  5% {
+    -webkit-transform:: rotateX(0);
+    opacity: 1;
+  }
+  0% {
+    -webkit-transform:: rotateX(90deg);
+    opacity: 0;
+  }
+}
+
 @keyframes titleAnimation {
   25% {
     transform: rotateX(90deg);
