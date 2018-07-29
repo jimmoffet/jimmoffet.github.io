@@ -11,30 +11,35 @@
   left: 0;
   display: inline-block;
   opacity: 0;
+
   animation-name: titleAnimation;
   animation-timing-function: ease;
   animation-duration: 8s;
   animation-delay: 0.0s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
+
   -webkit-animation-name: titleAnimation;
   -webkit-animation-timing-function: ease;
   -webkit-animation-duration: 8s;
   -webkit-animation-delay: 0.0s;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-iteration-count: infinite;
+
   -moz-animation-name: titleAnimation;
   -moz-animation-timing-function: ease;
   -moz-animation-duration: 8s;
   -moz-animation-delay: 0.0s;
   -moz-animation-fill-mode: forwards;
   -moz-animation-iteration-count: infinite;
+
   -ms-animation-name: titleAnimation;
   -ms-animation-timing-function: ease;
   -ms-animation-duration: 8s;
   -ms-animation-delay: 0.0s;
   -ms-animation-fill-mode: forwards;
   -ms-animation-iteration-count: infinite;
+
   -o-animation-name: titleAnimation;
   -o-animation-timing-function: ease;
   -o-animation-duration: 8s;
@@ -126,30 +131,35 @@
   position: absolute;
   display: inline-block;
   opacity: 0;
+
   animation-name: titleAnimation;
   animation-timing-function: ease;
   animation-duration: 8s;
   animation-delay: 6s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
+
   -webkit-animation-name: titleAnimation;
   -webkit-animation-timing-function: ease;
   -webkit-animation-duration: 8s;
   -webkit-animation-delay: 6s;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-iteration-count: infinite;
+
   -moz-animation-name: titleAnimation;
   -moz-animation-timing-function: ease;
   -moz-animation-duration: 8s;
   -moz-animation-delay: 6s;
   -moz-animation-fill-mode: forwards;
   -moz-animation-iteration-count: infinite;
+
   -ms-animation-name: titleAnimation;
   -ms-animation-timing-function: ease;
   -ms-animation-duration: 8s;
   -ms-animation-delay: 6s;
   -ms-animation-fill-mode: forwards;
   -ms-animation-iteration-count: infinite;
+
   -o-animation-name: titleAnimation;
   -o-animation-timing-function: ease;
   -o-animation-duration: 8s;
@@ -159,38 +169,38 @@
 }
 
 @-webkit-keyframes titleAnimation {
-  25% {
-    -webkit-transform:: rotateX(90deg);
+  1% {
+    -webkit-transform: rotateX(90deg);
     opacity: 0;
   }
-  20% {
-    -webkit-transform:: rotateX(0);
-    opacity: 1;
-  }
   5% {
-    -webkit-transform:: rotateX(0);
+    -webkit-transform: rotateX(0);
     opacity: 1;
   }
-  0% {
-    -webkit-transform:: rotateX(90deg);
+  20% {
+    -webkit-transform: rotateX(0);
+    opacity: 1;
+  }
+  25% {
+    -webkit-transform: rotateX(90deg);
     opacity: 0;
   }
 }
 
 @keyframes titleAnimation {
-  25% {
+  1% {
     transform: rotateX(90deg);
     opacity: 0;
-  }
-  20% {
-    transform: rotateX(0);
-    opacity: 1;
   }
   5% {
     transform: rotateX(0);
     opacity: 1;
   }
-  0% {
+  20% {
+    transform: rotateX(0);
+    opacity: 1;
+  }
+  25% {
     transform: rotateX(90deg);
     opacity: 0;
   }
