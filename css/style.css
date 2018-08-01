@@ -21,8 +21,8 @@
 
   -webkit-animation-name: titleAnimation;
   -webkit-animation-timing-function: ease;
-  -webkit-animation-duration: 8s;
-  -webkit-animation-delay: 0.0s;
+/*  -webkit-animation-duration: 8s;*/
+  -webkit-animation-delay: -2s;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-iteration-count: infinite;
 
@@ -63,8 +63,8 @@
   animation-iteration-count: infinite;
   -webkit-animation-name: titleAnimation;
   -webkit-animation-timing-function: ease;
-  -webkit-animation-duration: 8s;
-  -webkit-animation-delay: 2s;
+/*  -webkit-animation-duration: 8s;*/
+  -webkit-animation-delay: -4s;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-iteration-count: infinite;
   -moz-animation-name: titleAnimation;
@@ -101,8 +101,8 @@
   animation-iteration-count: infinite;
   -webkit-animation-name: titleAnimation;
   -webkit-animation-timing-function: ease;
-  -webkit-animation-duration: 8s;
-  -webkit-animation-delay: 4s;
+/*  -webkit-animation-duration: 8s;*/
+  -webkit-animation-delay: -6s;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-iteration-count: infinite;
   -moz-animation-name: titleAnimation;
@@ -141,8 +141,8 @@
 
   -webkit-animation-name: titleAnimation;
   -webkit-animation-timing-function: ease;
-  -webkit-animation-duration: 8s;
-  -webkit-animation-delay: 6s;
+/*  -webkit-animation-duration: 8s;*/
+  -webkit-animation-delay: -8s;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-iteration-count: infinite;
 
@@ -185,6 +185,10 @@
     -webkit-transform: rotateX(90deg);
     opacity: 0;
   }
+  100% {
+    -webkit-transform: rotateX(90deg);
+    opacity: 0;
+  }
 }
 
 @keyframes titleAnimation {
@@ -201,6 +205,10 @@
     opacity: 1;
   }
   25% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  100% {
     transform: rotateX(90deg);
     opacity: 0;
   }
