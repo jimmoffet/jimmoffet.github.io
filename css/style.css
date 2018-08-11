@@ -222,7 +222,7 @@
 }
 
 .hidden-sm {
-    display: none;
+    display: inherit;
   }
 
 p {
@@ -230,7 +230,7 @@ p {
 }
 
 .row-credits {
-  margin-bottom: 60px;
+  margin-bottom: 11vh;
 }
 
 .project-credits {
@@ -246,10 +246,11 @@ p {
 .intro .email{
   background: white;
   padding-bottom: 11vh;
+  /*display:none;*/
 }
 
 .intro-header {
-  margin: 90px 0 30px 0;
+  margin: 90px 0 8vw 0;
 }
 
 .project-intro-header {
@@ -397,19 +398,21 @@ p.thumbnail-title:hover  {
   margin-bottom: 60px;
 } 
 
+.clerky-product {
+  border: 1px solid #ebebeb;
+  padding: 120px;
+  margin: 60px 0;
+}
 
-@media all and (min-width: 10px) {
+.clerky-product a {
+  word-wrap: break-word;
+  border-bottom: 1px solid #ebebeb;
+  padding-bottom: 1px;
+}
 
-  .clerky-product {
-    border: 1px solid #ebebeb;
-    padding: 120px;
-    margin: 60px 0;
-  }
-
-  .clerky-product a {
-    word-wrap: break-word;
-    border-bottom: 1px solid #ebebeb;
-    padding-bottom: 1px;
+@media all and (min-width: 1000px) {
+  .intro .email{
+    display:none;
   }
 }
 
@@ -419,17 +422,25 @@ p.thumbnail-title:hover  {
     margin: 0 0 11vh 0;
   }
 
-}
-
-@media all and (max-width: 767px) and (min-width: 351px) {
   .hidden-sm {
     display: none;
+  }
+
+  .intro-header {
+    margin: 20px 0 5vw 0;
   }
 
   .info {
     margin-bottom: 0;
     line-height: 2.6rem;
+    /*display:none;*/
   }
+
+}
+
+@media all and (max-width: 767px) and (min-width: 351px) {
+
+  
 
   .intro {
     background-color: white;
@@ -477,7 +488,7 @@ p.thumbnail-title:hover  {
   }
 
   .row-credits {
-  margin-bottom: 0px;
+    display: none;
   }  
 
 }
@@ -488,25 +499,29 @@ p.thumbnail-title:hover  {
     font-size: 9vw;
   }
 
-  h5.toplinks {
-    font-size: 9vw;
+  h5 {
+    font-size: 5rem;
   }
+
+  /*h5.toplinks {
+    font-size: 9vw;
+  }*/
 
   .toplinks {
     margin: 0 0 13vw 0;
   }
 
   .intro .email {
-    padding: 0 0 13vw 0;
+    padding: 0 0 40vw 0;
+  }
+
+  .row-credits {
+    display: none;
   }
 
 }
 
 @media all and (max-width: 350px) {
-
-  .hidden-sm {
-    display: none;
-  }
 
   a.thumbnail-title  {
   opacity: 1;
@@ -517,10 +532,7 @@ p.thumbnail-title:hover  {
   display: none;
   }
 
-  .row-credits {
-  margin-bottom: 0px;
-  }
-
+  
   .clerky-product {
     word-wrap: break-word;
     border: 1px solid #ebebeb;
