@@ -218,7 +218,7 @@
 /*Typography*/
 
 .toplinks {
-  margin: 11vh 0 11vh 0;
+  margin: 0 0 11vh 0;
 }
 
 .hidden-sm {
@@ -241,6 +241,11 @@ p {
   background-color: white;
   position: relative;
   z-index: 2;
+}
+
+.intro .email{
+  background: white;
+  padding-bottom: 11vh;
 }
 
 .intro-header {
@@ -284,8 +289,8 @@ a:hover {
 /*Images*/
 
 .thumbnail-image {
-  margin-bottom: 12vw;
-  margin-top: 170px;
+  /*margin-bottom: 12vw;
+  margin-top: 170px;*/
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
@@ -307,8 +312,8 @@ a:hover {
 }
 
 .thumbnail-video {
-  margin-bottom: 12vw;
-  margin-top: 170px;
+  /*margin-bottom: 12vw;
+  margin-top: 170px;*/
   /*box-shadow: 1px 1px 5px #111;*/
   width: 700px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -336,6 +341,7 @@ video.thumbnail-video:hover {
 .thumbnail-container {
   display: inline-block;
   position: relative;
+  margin-bottom: 13vw;
 }
 
 a.thumbnail-title  {
@@ -410,7 +416,7 @@ p.thumbnail-title:hover  {
 @media all and (max-width: 999px) {
 
   .toplinks {
-    margin: 11vw 0 11vw 0;
+    margin: 0 0 11vh 0;
   }
 
 }
@@ -467,41 +473,17 @@ p.thumbnail-title:hover  {
   }
 
   .thumbnail-container p {
-  opacity: 0;
+  display: none;
   }
 
   .row-credits {
   margin-bottom: 0px;
   }  
 
-  .thumbnail-image {
-    margin-bottom: 12vw;
-    margin-top: 14vw;
-  }
-
-
 }
 
-@media (min-width: 470px) and (max-width: 540px) {
-  h2 {
-    font-size: 8vw;
-  }
+@media all and (max-width: 540px) {
 
-  h5.toplinks {
-    font-size: 8vw;
-  }
-  .thumbnail-image {
-    margin-bottom: 12vw;
-    margin-top: 18vw;
-  }
-  .thumbnail-video {
-    margin-bottom: 12vw;
-    margin-top: 18vw;
-  }
-
-}
-
-@media all and (max-width: 470px) {
   h2 {
     font-size: 9vw;
   }
@@ -510,16 +492,15 @@ p.thumbnail-title:hover  {
     font-size: 9vw;
   }
 
-  .thumbnail-image {
-    margin-bottom: 12vw;
-    margin-top: 22vw;
+  .toplinks {
+    margin: 0 0 13vw 0;
   }
-  .thumbnail-video {
-    margin-bottom: 12vw;
-    margin-top: 22vw;
-  }
-}
 
+  .intro .email {
+    padding: 0 0 13vw 0;
+  }
+
+}
 
 @media all and (max-width: 350px) {
 
@@ -532,7 +513,8 @@ p.thumbnail-title:hover  {
   }
 
   .thumbnail-container p {
-  opacity: 0;
+  /*opacity: 0;*/
+  display: none;
   }
 
   .row-credits {
@@ -571,7 +553,6 @@ p.thumbnail-title:hover  {
   .intro .row {
     width: 110%;
     background-color: white;
-    margin-bottom: 0px;
   }
 
   .intro .row-credits {
