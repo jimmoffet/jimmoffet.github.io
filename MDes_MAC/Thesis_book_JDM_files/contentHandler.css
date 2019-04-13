@@ -1,0 +1,170 @@
+
+.flyInFromRightAnimation {
+	-webkit-animation-delay:0.000s;
+	-webkit-animation-duration:1.000s;
+	-webkit-animation-fill-mode:forwards;
+	-webkit-animation-iteration-count:1;
+	-webkit-animation-name:flyInFromRightKeyFrames;
+	-webkit-animation-timing-function:ease;
+	-webkit-transform-origin:0% 0%;
+	animation-delay:0.000s;
+	animation-duration:1.000s;
+	animation-fill-mode:forwards;
+	animation-iteration-count:1;
+	animation-name:flyInFromRightKeyFrames;
+	animation-timing-function:ease;
+	transform-origin:0% 0%;
+}
+.flyInFromLeftAnimation {
+	-webkit-animation-delay:0.000s;
+	-webkit-animation-duration:1.000s;
+	-webkit-animation-fill-mode:forwards;
+	-webkit-animation-iteration-count:1;
+	-webkit-animation-name:flyInFromLeftKeyFrames;
+	-webkit-animation-timing-function:ease;
+	-webkit-transform-origin:0% 0%;
+	animation-delay:0.000s;
+	animation-duration:1.000s;
+	animation-fill-mode:forwards;
+	animation-iteration-count:1;
+	animation-name:flyInFromLeftKeyFrames;
+	animation-timing-function:ease;
+	transform-origin:0% 0%;
+}
+
+@-webkit-keyframes flyOutRightKeyFrames {
+0% { opacity:1; }
+100% { opacity:0; }
+} 
+@keyframes flyOutRightKeyFrames {
+0% { opacity:1; }
+100% { opacity:0; }
+} 
+@-webkit-keyframes flyOutLeftKeyFrames {
+0% { opacity:1; }
+100% { opacity:0; }
+}
+@keyframes flyOutLeftKeyFrames {
+0% { opacity:1; }
+100% { opacity:0; }
+}   
+
+.flyOutRightAnimation {
+	-webkit-animation-delay:0.000s;
+	-webkit-animation-duration:1.000s;
+	-webkit-animation-fill-mode:forwards;
+	-webkit-animation-iteration-count:1;
+	-webkit-animation-name:flyOutRightKeyFrames;
+	-webkit-animation-timing-function:ease;
+	-webkit-transform-origin:50% 50%;
+	animation-delay:0.000s;
+	animation-duration:1.000s;
+	animation-fill-mode:forwards;
+	animation-iteration-count:1;
+	animation-name:flyOutRightKeyFrames;
+	animation-timing-function:ease;
+	transform-origin:50% 50%;
+}
+.flyOutLeftAnimation {
+	-webkit-animation-delay:0.000s;
+	-webkit-animation-duration:1.000s;
+	-webkit-animation-fill-mode:forwards;
+	-webkit-animation-iteration-count:1;
+	-webkit-animation-name:flyOutLeftKeyFrames;
+	-webkit-animation-timing-function:ease;
+	-webkit-transform-origin:50% 50%;
+	animation-delay:0.000s;
+	animation-duration:1.000s;
+	animation-fill-mode:forwards;
+	animation-iteration-count:1;
+	animation-name:flyOutLeftKeyFrames;
+	animation-timing-function:ease;
+	transform-origin:50% 50%;
+}
+
+.makeOpaque{
+	opacity: 0;
+}
+.moveOut{
+	z-index: -1;
+}
+
+.moveFrame {
+	transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+}
+
+/*Spinner*/
+.spinner {
+  width: 65px;
+  text-align: center;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-15px,-40px);
+}
+.spinner > .circle {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-sizing: border-box;
+  border: solid 4px rgba(255,255,255,0.2);
+  border-top-color: #fff;
+  -webkit-animation: spin 1s infinite linear;
+  -moz-animation: spin 1s infinite linear;
+  -ms-animation: spin 1s infinite linear;
+  -o-animation: spin 1s infinite linear;
+  animation: spin 1s infinite linear;
+
+}
+
+.spinner > h6 {
+  margin-top: 10px;
+  color: #dbdfe2;
+  font-size: 15px;
+  font-family: adobe-clean;
+}
+
+@-webkit-keyframes lineLoad {
+  from {
+    left: -140px;
+  }
+  to {
+    left: 0px;
+  }
+}
+/* Standard syntax */
+@-webkit-keyframes imgLoad {
+  from {
+    opacity: 0.2;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter: alpha(opacity=20);
+  }
+  to {
+    opacity: 1;
+    -ms-filter: none;
+    filter: none;
+  }
+}
+@-webkit-keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+}
+
+@-moz-keyframes spin {
+    to { -moz-transform: rotate(360deg); }
+}
+
+@-ms-keyframes spin {
+    to { -ms-transform: rotate(360deg); }
+}
+
+@-o-keyframes spin {
+    to { -o-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
