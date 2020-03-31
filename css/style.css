@@ -294,6 +294,7 @@ a:hover {
   margin-top: 170px;*/
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  width: 100%;
 }
 
 .page-image {
@@ -309,21 +310,24 @@ a:hover {
 }
 
 .thumbnail-container:hover img {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); */
+  filter: drop-shadow(0px 14px 12px rgba(0,0,0,0.29)) !important;
 }
 
 .thumbnail-video {
   /*margin-bottom: 12vw;
   margin-top: 170px;*/
   /*box-shadow: 1px 1px 5px #111;*/
-  width: 700px;
+  /* width: 700px; */
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  width: 100%;
 }
 
 
 video.thumbnail-video:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  /* box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); */
+  filter: drop-shadow(0px 14px 12px rgba(0,0,0,0.29));
 }
 
 .thumbnail-gif {
@@ -396,7 +400,7 @@ p.thumbnail-title:hover  {
 
 .large-margin-bottom {
   margin-bottom: 60px;
-} 
+}
 
 .clerky-product {
   border: 1px solid #ebebeb;
@@ -445,7 +449,7 @@ p.thumbnail-title:hover  {
 
 @media all and (max-width: 767px) and (min-width: 351px) {
 
-  
+
 
   .intro {
     background-color: white;
@@ -494,7 +498,7 @@ p.thumbnail-title:hover  {
 
   .row-credits {
     display: none;
-  }  
+  }
 
 }
 
@@ -517,7 +521,7 @@ p.thumbnail-title:hover  {
   }
 
   .intro .email {
-    padding: 0 0 40vw 0;
+    padding: 0 0 20vw 0;
   }
 
   .row-credits {
@@ -537,7 +541,7 @@ p.thumbnail-title:hover  {
   display: none;
   }
 
-  
+
   .clerky-product {
     word-wrap: break-word;
     border: 1px solid #ebebeb;
