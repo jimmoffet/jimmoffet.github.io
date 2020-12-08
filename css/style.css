@@ -344,14 +344,15 @@ video.thumbnail-video:hover {
 }
 
 .thumbnail-container {
-  display: inline-block;
+  display: block;
   position: relative;
   margin-bottom: 13vw;
+  max-width: 968px;
 }
 
 a.thumbnail-title  {
   display: block;
-  position: absolute;
+  /*position: absolute;*/
   width: 100%;
   height: 100%;
   background: none;
