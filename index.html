@@ -81,7 +81,7 @@
 
       /* Style for the pencil icon in edit mode */
       #addButton.edit-mode:before {
-        content: "✎"; /* Pencil icon */
+        content: "✓"; /* Pencil icon */
         font-size: 20px;
       }
 
@@ -93,22 +93,12 @@
 
       /* Style for the plus icon (default) */
       #addButton:not(.edit-mode):not(.add-mode):before {
-        content: "+"; /* Plus icon */
-        font-size: 20px;
-      }
-
-      #audioURLInput {
-        position: absolute;
-        bottom: 50px; /* Adjust position above the radius slider */
-        left: 10px;
-        display: none; /* Initially hidden */
-        width: 150px;
-        padding: 0 10px;
-        box-sizing: border-box;
-      }
-
-      #audioURLInput.visible {
+        background: url("transmitter.svg");
+        width: 25px;
+        height: 25px;
+        background-size: cover;
         display: block;
+        content: "";
       }
 
       #notification {
@@ -119,16 +109,85 @@
           sans-serif;
       }
 
-      #radiusSlider {
+      #bottom-left-nav {
         position: absolute;
-        bottom: 10px;
+        bottom: 20px;
         left: 10px;
-        display: none; /* Initially hidden */
         width: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
       }
 
+      #deleteButton {
+        display: none;
+        width: 38px;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      #deleteButton:before {
+        content: "❌"; /* Trash can icon */
+        font-size: 20px;
+      }
+
+      #radiusSlider {
+        display: none;
+      }
+
+      #audioURLInput {
+        display: none;
+        padding: 0 10px;
+        box-sizing: border-box;
+      }
+
+      #deleteButton.visible,
+      #audioURLInput.visible,
       #radiusSlider.visible {
-        display: block;
+        display: flex;
+      }
+
+      #bottom-right-nav {
+        position: absolute;
+        bottom: 20px;
+        right: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 0px;
+      }
+
+      #uploadButton,
+      #downloadButton {
+        display: flex;
+        width: 38px;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      #downloadButton:before {
+        content: "💾"; /* Down arrow icon */
+        font-size: 20px;
+      }
+
+      #uploadButton:before {
+        background: url("upload.svg");
+        width: 20px;
+        height: 20px;
+        background-size: cover;
+        content: "";
+      }
+
+      #downloadButton.visible,
+      #uploadButton.visible {
+        display: flex;
+      }
+
+      #gameURLInput {
+        display: none;
+        padding: 0 10px;
+        box-sizing: border-box;
       }
 
       #defaultElement {
@@ -175,30 +234,73 @@
     <div id="mapContainer">
       <canvas id="mapCanvas"></canvas>
       <div id="top-left-nav">
-        <div id="addButton" class="ui-base ui-shadow mr-10"></div>
-        <div id="notification" class="ui-base ui-shadow mr-10">
+        <div
+          id="addButton"
+          class="ui-base ui-shadow mr-10"
+          title="Place a transmitter"
+        ></div>
+        <div
+          id="notification"
+          class="ui-base ui-shadow mr-10"
+          title="Place a transmitter"
+        >
           Add Transmitter
         </div>
       </div>
       <div id="circleContainer"></div>
       <div id="map-nav" class="center-nav">
-        <div id="changeMapButton" class="ui-base ui-shadow"></div>
+        <div
+          id="changeMapButton"
+          class="ui-base ui-shadow"
+          title="Change map image"
+        ></div>
       </div>
-      <input
-        type="text"
-        id="audioURLInput"
-        class="ui-base ui-shadow mr-10"
-        placeholder="Enter audio URL"
-      />
-      <input
-        type="range"
-        min="20"
-        max="500"
-        value="200"
-        id="radiusSlider"
-        class="ui-shadow"
-      />
+      <div id="bottom-left-nav">
+        <div
+          id="deleteButton"
+          class="ui-base ui-shadow mr-10"
+          title="Delete transmitter"
+        ></div>
+        <input
+          type="text"
+          id="audioURLInput"
+          class="ui-base ui-shadow mr-10"
+          placeholder="Enter audio URL"
+        />
+        <input
+          type="range"
+          min="20"
+          max="500"
+          value="200"
+          id="radiusSlider"
+          class="ui-shadow"
+        />
+      </div>
+      <div id="bottom-right-nav">
+        <input
+          type="text"
+          id="gameURLInput"
+          class="ui-base ui-shadow mr-10"
+          placeholder="Load from drive URL"
+        />
+        <div
+          id="downloadButton"
+          class="ui-base ui-shadow mr-10"
+          title="Save game to file"
+        ></div>
+        <div
+          id="uploadButton"
+          class="ui-base ui-shadow mr-10"
+          title="Load game from file"
+        ></div>
+      </div>
     </div>
+    <input
+      type="file"
+      id="uploadFileInput"
+      style="display: none"
+      accept="application/json"
+    />
     <input
       type="file"
       id="mapFileInput"
@@ -212,8 +314,34 @@
       const DEFAULT_TRANSMITTER_COLOR = "red";
       const AVATAR_MOVE_STEP = 10;
 
+      // --- App State ---
+      const appState = {
+        addTransmitterMode: false,
+        editTransmitterMode: false,
+        notificationText: "Add Transmitter", // Text to display in the notification
+        mapState: {
+          image: new Image(),
+          scale: 1,
+          canvasWidth: 0,
+          canvasHeight: 0,
+          translateX: 0,
+          translateY: 0,
+          isDragging: false, // Map drag
+          minScale: 1,
+          maxScale: 3,
+          dragStartX: 0, // Start X position for the initial drag
+          dragStartY: 0, // Start Y position for the initial drag
+        },
+        transmitterState: {
+          selectedTransmitter: null,
+          isDraggingTransmitter: false, // Circle drag
+          currentSessionTransmitter: null,
+          placedTransmitters: [],
+        },
+      };
+
       // --- Map State ---
-      const mapState = {
+      appState.mapState = {
         image: new Image(),
         scale: 1,
         translateX: 0,
@@ -230,7 +358,7 @@
         const maxRadius = 150; // Set the radius of the largest circle
         const numCircles = maxRadius / 10; // Adjust the number of circles as needed
 
-        if (mapState.image.src === "") {
+        if (appState.mapState.image.src === "") {
           for (let i = 0; i < numCircles; i++) {
             const radius = i * ((maxRadius - 30) / numCircles) + 30; // ((maxRadius + 60) / numCircles) * (i + 1); // i * ((120 - 60) / numCircles) + 60;
             const circle = document.createElement("div");
@@ -248,9 +376,8 @@
       });
 
       // --- Transmitter State ---
-      const audioURLInput = document.getElementById("audioURLInput");
 
-      const transmitterState = {
+      appState.transmitterState = {
         selectedTransmitter: null,
         isDraggingTransmitter: false, // Circle drag
         currentSessionTransmitter: null,
@@ -266,29 +393,30 @@
         y: 0,
       };
 
-      // --- App State ---
-      const appState = {
-        addTransmitterMode: false,
-        editTransmitterMode: false,
-        notificationText: "Add Transmitter", // Text to display in the notification
-      };
-
       // --- DOM Elements ---
       const canvas = document.getElementById("mapCanvas");
       const ctx = canvas.getContext("2d");
       const addButton = document.getElementById("addButton");
       const notification = document.getElementById("notification");
       const radiusSlider = document.getElementById("radiusSlider");
+      const audioURLInput = document.getElementById("audioURLInput");
+      const deleteButton = document.getElementById("deleteButton");
+      const downloadButton = document.getElementById("downloadButton");
+      const uploadButton = document.getElementById("uploadButton");
+      const uploadFileInput = document.getElementById("uploadFileInput");
 
       // --- Initialization ---
       const mapImageKey = "mapImageSrc";
       const mapImageSrc = localStorage.getItem(mapImageKey);
+      console.log("Initial mapImageSrc from localStorage:", mapImageSrc);
 
       function loadAvatar() {
         avatarState.image.src = "lilguy.png";
         avatarState.image.onload = () => {
-          avatarState.x = mapState.image.width / 2 - avatarState.width * 0.5;
-          avatarState.y = mapState.image.height / 2 - avatarState.height * 0.5;
+          avatarState.x =
+            appState.mapState.image.width / 2 - avatarState.width * 0.5;
+          avatarState.y =
+            appState.mapState.image.height / 2 - avatarState.height * 0.5;
           console.log(
             "canvas.width:",
             canvas.width,
@@ -306,19 +434,20 @@
             avatarState.x,
             avatarState.y
           );
-          console.log("mapState.scale:", mapState.scale);
+          console.log("appState.mapState.scale:", appState.mapState.scale);
           console.log(
-            "mapState.translateX:",
-            mapState.translateX,
-            "mapState.translateY:",
-            mapState.translateY
+            "appState.mapState.translateX:",
+            appState.mapState.translateX,
+            "appState.mapState.translateY:",
+            appState.mapState.translateY
           );
           draw();
         };
       }
 
       function updateUIVisibility() {
-        const isVisible = mapState.image.src !== "";
+        const isVisible = appState.mapState.image.src !== "";
+        console.log("updateUIVisibility - isVisible:", isVisible);
         addButton.style.display = isVisible ? "flex" : "none";
         notification.style.display = isVisible ? "flex" : "none";
         const mapNav = document.getElementById("map-nav");
@@ -329,21 +458,50 @@
           mapNav.classList.remove("top-right-nav");
           mapNav.classList.add("center-nav");
         }
+        const bottomRightNav = document.getElementById("bottom-right-nav");
+        bottomRightNav.style.display =
+          appState.addTransmitterMode || appState.editTransmitterMode
+            ? "none"
+            : "flex";
+      }
+
+      function removeSplashCircle(mapImageSrc) {
+        const splashCircle = document.getElementById("circleContainer");
+        splashCircle.style.display = "none";
+      }
+
+      function loadMapImage() {
+        console.log("Map image loaded successfully");
+        removeSplashCircle();
+        resizeCanvas();
+        calculateMinScale();
+        centerImage();
+        updateUIVisibility();
+        draw();
+        loadAvatar();
       }
 
       if (mapImageSrc) {
-        mapState.image.src = mapImageSrc;
-        mapState.image.onload = () => {
-          const splashCircle = document.getElementById("circleContainer");
-          splashCircle.style.display = "none";
-          resizeCanvas();
-          calculateMinScale();
-          centerImage();
-          updateUIVisibility();
-          draw();
-          loadAvatar();
+        console.log("Loading map image from localStorage:", mapImageSrc);
+        appState.mapState.image.src = mapImageSrc;
+        console.log(
+          "appState.mapState.image.src set to:",
+          appState.mapState.image.src
+        );
+        console.log("appState set to:", appState);
+        appState.mapState.image.onload = () => {
+          console.log("Map image loaded successfully");
+          loadMapImage();
+        };
+        appState.mapState.image.onerror = (error) => {
+          console.error("Error loading map image:", error);
+          localStorage.removeItem(mapImageKey); // Clear the invalid image from localStorage
+          showMapUploadDialog(); // Prompt the user to upload a new map image
         };
       } else {
+        console.log(
+          "No map image found in localStorage, showing upload dialog"
+        );
         showMapUploadDialog();
       }
 
@@ -360,18 +518,30 @@
           const reader = new FileReader();
           reader.onload = (ev) => {
             const mapImageSrc = ev.target.result;
+            console.log("Map image loaded from file input:", mapImageSrc);
             localStorage.setItem(mapImageKey, mapImageSrc);
-            mapState.image.src = mapImageSrc;
-            mapState.image.onload = () => {
-              resizeCanvas();
-              calculateMinScale();
-              centerImage();
-              updateUIVisibility();
-              draw();
-              loadAvatar();
+            appState.mapState.image.src = mapImageSrc;
+            console.log(
+              "appState.mapState.image.src set to:",
+              appState.mapState.image.src
+            );
+            console.log("appState set to:", appState);
+            appState.mapState.image.onload = () => {
+              loadMapImage();
+            };
+            appState.mapState.image.onerror = (error) => {
+              console.error("Error loading map image from file input:", error);
+              localStorage.removeItem(mapImageKey); // Clear the invalid image from localStorage
+              showMapUploadDialog(); // Prompt the user to upload a new map image
             };
           };
-          reader.readAsDataURL(file);
+          // Ensure the file variable is defined and passed correctly
+          if (file) {
+            console.log("File selected:", file);
+            reader.readAsDataURL(file);
+          } else {
+            console.error("No file selected for upload.");
+          }
         });
 
       updateUIVisibility();
@@ -379,10 +549,12 @@
       document
         .getElementById("changeMapButton")
         .addEventListener("click", () => {
+          console.log("Change map button clicked");
           document.getElementById("mapFileInput").click();
         });
 
       function showMapUploadDialog() {
+        console.log("Showing map upload dialog");
         document.getElementById("mapFileInput").click();
       }
 
@@ -400,36 +572,52 @@
         }
       }
 
+      function stopTransmitterAudio(transmitter) {
+        if (transmitter.audio) {
+          transmitter.audio.pause();
+          transmitter.audio = null;
+        }
+      }
+
       function resizeCanvas() {
         const gameArea = document.getElementById("mapCanvas");
         canvas.width = gameArea.clientWidth;
         canvas.height = gameArea.clientHeight;
+
+        // Save canvas dimensions in appState
+        appState.mapState.canvasWidth = canvas.width;
+        appState.mapState.canvasHeight = canvas.height;
       }
 
       function calculateMinScale() {
         const canvasAspectRatio = canvas.width / canvas.height;
-        const imageAspectRatio = mapState.image.width / mapState.image.height;
+        const imageAspectRatio =
+          appState.mapState.image.width / appState.mapState.image.height;
 
-        mapState.minScale =
+        appState.mapState.minScale =
           canvasAspectRatio > imageAspectRatio
-            ? canvas.width / mapState.image.width
-            : canvas.height / mapState.image.height;
+            ? canvas.width / appState.mapState.image.width
+            : canvas.height / appState.mapState.image.height;
 
-        mapState.scale = mapState.minScale;
+        appState.mapState.scale = appState.mapState.minScale;
       }
 
       function centerImage() {
-        mapState.translateX =
-          (canvas.width - mapState.image.width * mapState.scale) / 2;
-        mapState.translateY =
-          (canvas.height - mapState.image.height * mapState.scale) / 2;
+        appState.mapState.translateX =
+          (canvas.width -
+            appState.mapState.image.width * appState.mapState.scale) /
+          2;
+        appState.mapState.translateY =
+          (canvas.height -
+            appState.mapState.image.height * appState.mapState.scale) /
+          2;
       }
 
       function getEventCoordinates(event) {
-        const clientX = event.clientX - mapState.translateX;
-        const clientY = event.clientY - mapState.translateY;
-        const x = clientX / mapState.scale;
-        const y = clientY / mapState.scale;
+        const clientX = event.clientX - appState.mapState.translateX;
+        const clientY = event.clientY - appState.mapState.translateY;
+        const x = clientX / appState.mapState.scale;
+        const y = clientY / appState.mapState.scale;
         return { x: x, y: y };
       }
 
@@ -453,23 +641,53 @@
           appState.editTransmitterMode
         );
         console.log(
-          "transmitterState.selectedTransmitter:",
-          transmitterState.selectedTransmitter
+          "appState.transmitterState.selectedTransmitter:",
+          appState.transmitterState.selectedTransmitter
         );
-        if (transmitterState.selectedTransmitter) {
-          transmitterState.selectedTransmitter.audioURL = event.target.value;
+        if (appState.transmitterState.selectedTransmitter) {
+          appState.transmitterState.selectedTransmitter.audioURL =
+            event.target.value;
           console.log("Audio URL:", event.target.value);
         } else {
           console.log("No transmitter selected");
         }
       }
 
+      function deleteSelectedTransmitter() {
+        if (appState.transmitterState.selectedTransmitter) {
+          stopTransmitterAudio(appState.transmitterState.selectedTransmitter);
+          appState.transmitterState.placedTransmitters =
+            appState.transmitterState.placedTransmitters.filter(
+              (transmitter) =>
+                transmitter !== appState.transmitterState.selectedTransmitter
+            );
+          appState.transmitterState.selectedTransmitter = null;
+          appState.transmitterState.currentSessionTransmitter = null;
+        }
+
+        // set appstate.addTransmitterMode to false
+        appState.addTransmitterMode = false;
+        appState.editTransmitterMode = false;
+
+        // Update UI elements
+        addButton.classList.remove("edit-mode");
+        radiusSlider.classList.remove("visible");
+        audioURLInput.classList.remove("visible");
+        deleteButton.classList.remove("visible");
+        addButton.classList.remove("add-mode");
+        updateNotificationVisibility();
+        draw();
+      }
+
       // --- Drawing Functions ---
       function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.save();
-        ctx.translate(mapState.translateX, mapState.translateY);
-        ctx.scale(mapState.scale, mapState.scale);
+        ctx.translate(
+          appState.mapState.translateX,
+          appState.mapState.translateY
+        );
+        ctx.scale(appState.mapState.scale, appState.mapState.scale);
 
         drawMap();
         drawTransmitters();
@@ -479,27 +697,26 @@
       }
 
       function drawMap() {
-        ctx.drawImage(mapState.image, 0, 0);
+        ctx.drawImage(appState.mapState.image, 0, 0);
       }
 
       function drawTransmitters() {
-        transmitterState.placedTransmitters.forEach((transmitter, index) => {
-          drawTransmitter(transmitter, index);
-          const distance = calculateDistance(
-            avatarState.x,
-            avatarState.y,
-            transmitter.x,
-            transmitter.y,
-            transmitter.radius
-          );
-          transmitter.distanceToAvatar = distance;
-          if (transmitter.audio) {
-            transmitter.audio.volume = distance;
+        appState.transmitterState.placedTransmitters.forEach(
+          (transmitter, index) => {
+            drawTransmitter(transmitter, index);
+            const distance = calculateDistance(
+              avatarState.x,
+              avatarState.y,
+              transmitter.x,
+              transmitter.y,
+              transmitter.radius
+            );
+            transmitter.distanceToAvatar = distance;
+            if (transmitter.audio) {
+              transmitter.audio.volume = distance;
+            }
           }
-          console.log(
-            `Distance to transmitter at (${transmitter.x}, ${transmitter.y}): ${distance}`
-          );
-        });
+        );
       }
 
       function calculateDistance(x1, y1, x2, y2, radius) {
@@ -543,7 +760,7 @@
           "#4682B4", // SteelBlue
           "#B8860B", // DarkGoldenRod
         ];
-        //const seed = transmitterState.placedTransmitters.length;
+        //const seed = appState.transmitterState.placedTransmitters.length;
         const colorIndex = seed % colors.length;
         const circleColor = "#DC143C"; //colors[colorIndex];
         const numCircles = transmitter.radius / 12; // Number of concentric circles
@@ -572,8 +789,8 @@
       }
 
       function drawAvatar() {
-        const aw = avatarState.width / mapState.scale;
-        const ah = avatarState.height / mapState.scale;
+        const aw = avatarState.width / appState.mapState.scale;
+        const ah = avatarState.height / appState.mapState.scale;
         const x = avatarState.x - aw / 2;
         const y = avatarState.y - ah / 2;
         ctx.drawImage(avatarState.image, x, y, aw, ah);
@@ -585,25 +802,32 @@
 
         const scaleFactor = event.deltaY > 0 ? 0.9 : 1.1;
         const newScale = Math.max(
-          mapState.minScale,
-          Math.min(mapState.maxScale, mapState.scale * scaleFactor)
+          appState.mapState.minScale,
+          Math.min(
+            appState.mapState.maxScale,
+            appState.mapState.scale * scaleFactor
+          )
         );
         const { x: mouseX, y: mouseY } = getEventCoordinates(event);
 
-        mapState.translateX -= mouseX * (newScale - mapState.scale);
-        mapState.translateY -= mouseY * (newScale - mapState.scale);
-        mapState.scale = newScale;
+        appState.mapState.translateX -=
+          mouseX * (newScale - appState.mapState.scale);
+        appState.mapState.translateY -=
+          mouseY * (newScale - appState.mapState.scale);
+        appState.mapState.scale = newScale;
 
         // Ensure image covers viewport
-        const scaledWidth = mapState.image.width * mapState.scale;
-        const scaledHeight = mapState.image.height * mapState.scale;
+        const scaledWidth =
+          appState.mapState.image.width * appState.mapState.scale;
+        const scaledHeight =
+          appState.mapState.image.height * appState.mapState.scale;
 
-        if (mapState.translateX > 0) mapState.translateX = 0;
-        if (mapState.translateY > 0) mapState.translateY = 0;
-        if (mapState.translateX + scaledWidth < canvas.width)
-          mapState.translateX = canvas.width - scaledWidth;
-        if (mapState.translateY + scaledHeight < canvas.height)
-          mapState.translateY = canvas.height - scaledHeight;
+        if (appState.mapState.translateX > 0) appState.mapState.translateX = 0;
+        if (appState.mapState.translateY > 0) appState.mapState.translateY = 0;
+        if (appState.mapState.translateX + scaledWidth < canvas.width)
+          appState.mapState.translateX = canvas.width - scaledWidth;
+        if (appState.mapState.translateY + scaledHeight < canvas.height)
+          appState.mapState.translateY = canvas.height - scaledHeight;
 
         // If image smaller than viewport in both dimensions, center it.
         if (scaledWidth < canvas.width && scaledHeight < canvas.height) {
@@ -629,64 +853,75 @@
         }
 
         // Check if a placed transmitter is clicked
-        transmitterState.selectedTransmitter = null;
+        appState.transmitterState.selectedTransmitter = null;
         for (
-          let i = transmitterState.placedTransmitters.length - 1;
+          let i = appState.transmitterState.placedTransmitters.length - 1;
           i >= 0;
           i--
         ) {
-          const transmitter = transmitterState.placedTransmitters[i];
+          const transmitter = appState.transmitterState.placedTransmitters[i];
           if (isInsideCircle({ x, y }, transmitter)) {
-            transmitterState.selectedTransmitter = transmitter;
-            transmitterState.isDraggingTransmitter = true;
+            appState.transmitterState.selectedTransmitter = transmitter;
+            appState.transmitterState.isDraggingTransmitter = true;
             break;
           }
         }
 
         // Check if we clicked currentSessionTransmitter
         if (
-          !transmitterState.selectedTransmitter &&
-          transmitterState.currentSessionTransmitter &&
-          isInsideCircle({ x, y }, transmitterState.currentSessionTransmitter)
+          !appState.transmitterState.selectedTransmitter &&
+          appState.transmitterState.currentSessionTransmitter &&
+          isInsideCircle(
+            { x, y },
+            appState.transmitterState.currentSessionTransmitter
+          )
         ) {
-          transmitterState.selectedTransmitter =
-            transmitterState.currentSessionTransmitter;
-          transmitterState.isDraggingTransmitter = true;
+          appState.transmitterState.selectedTransmitter =
+            appState.transmitterState.currentSessionTransmitter;
+          appState.transmitterState.isDraggingTransmitter = true;
         }
 
-        if (transmitterState.isDraggingTransmitter) {
+        if (appState.transmitterState.isDraggingTransmitter) {
           // If a transmitter is selected, enter edit mode
-          enterEditTransmitterMode(transmitterState.selectedTransmitter);
+          enterEditTransmitterMode(
+            appState.transmitterState.selectedTransmitter
+          );
         } else {
-          mapState.isDragging = true;
-          mapState.dragStartX = event.clientX - mapState.translateX;
-          mapState.dragStartY = event.clientY - mapState.translateY;
+          appState.mapState.isDragging = true;
+          appState.mapState.dragStartX =
+            event.clientX - appState.mapState.translateX;
+          appState.mapState.dragStartY =
+            event.clientY - appState.mapState.translateY;
         }
       }
 
       function handleMouseMove(event) {
         const { x, y } = getEventCoordinates(event);
 
-        if (transmitterState.isDraggingTransmitter) {
-          moveTransmitter(transmitterState.selectedTransmitter, x, y);
+        if (appState.transmitterState.isDraggingTransmitter) {
+          moveTransmitter(appState.transmitterState.selectedTransmitter, x, y);
           return;
         }
 
-        if (!mapState.isDragging) return;
+        if (!appState.mapState.isDragging) return;
 
-        mapState.translateX = event.clientX - mapState.dragStartX;
-        mapState.translateY = event.clientY - mapState.dragStartY;
+        appState.mapState.translateX =
+          event.clientX - appState.mapState.dragStartX;
+        appState.mapState.translateY =
+          event.clientY - appState.mapState.dragStartY;
 
         // Ensure image covers viewport
-        const scaledWidth = mapState.image.width * mapState.scale;
-        const scaledHeight = mapState.image.height * mapState.scale;
+        const scaledWidth =
+          appState.mapState.image.width * appState.mapState.scale;
+        const scaledHeight =
+          appState.mapState.image.height * appState.mapState.scale;
 
-        if (mapState.translateX > 0) mapState.translateX = 0;
-        if (mapState.translateY > 0) mapState.translateY = 0;
-        if (mapState.translateX + scaledWidth < canvas.width)
-          mapState.translateX = canvas.width - scaledWidth;
-        if (mapState.translateY + scaledHeight < canvas.height)
-          mapState.translateY = canvas.height - scaledHeight;
+        if (appState.mapState.translateX > 0) appState.mapState.translateX = 0;
+        if (appState.mapState.translateY > 0) appState.mapState.translateY = 0;
+        if (appState.mapState.translateX + scaledWidth < canvas.width)
+          appState.mapState.translateX = canvas.width - scaledWidth;
+        if (appState.mapState.translateY + scaledHeight < canvas.height)
+          appState.mapState.translateY = canvas.height - scaledHeight;
 
         draw();
       }
@@ -705,32 +940,36 @@
       }
 
       function handleMouseUp(event) {
-        if (transmitterState.isDraggingTransmitter) {
-          transmitterState.isDraggingTransmitter = false;
+        if (appState.transmitterState.isDraggingTransmitter) {
+          appState.transmitterState.isDraggingTransmitter = false;
         } else if (appState.addTransmitterMode) {
           const { x, y } = getEventCoordinates(event);
           // If there's a current session transmitter, update its position
-          if (transmitterState.currentSessionTransmitter) {
-            moveTransmitter(transmitterState.currentSessionTransmitter, x, y);
+          if (appState.transmitterState.currentSessionTransmitter) {
+            moveTransmitter(
+              appState.transmitterState.currentSessionTransmitter,
+              x,
+              y
+            );
           }
           draw();
         } else if (appState.editTransmitterMode && !isEventTargetingUI(event)) {
           exitEditTransmitterMode();
         }
 
-        mapState.isDragging = false;
+        appState.mapState.isDragging = false;
       }
 
       function handleMouseLeave() {
-        mapState.isDragging = false;
-        transmitterState.isDraggingTransmitter = false;
+        appState.mapState.isDragging = false;
+        appState.transmitterState.isDraggingTransmitter = false;
       }
 
       function handleResize() {
         resizeCanvas();
         calculateMinScale();
-        if (mapState.scale < mapState.minScale) {
-          mapState.scale = mapState.minScale;
+        if (appState.mapState.scale < appState.mapState.minScale) {
+          appState.mapState.scale = appState.mapState.minScale;
         }
         centerImage();
         draw();
@@ -740,7 +979,7 @@
         if (event.key === "Enter") {
           if (appState.addTransmitterMode) {
             // Exit addTransmitterMode without pushing the current session transmitter again
-            transmitterState.currentSessionTransmitter = null; // Reset current session transmitter
+            appState.transmitterState.currentSessionTransmitter = null; // Reset current session transmitter
             draw();
             toggleAddTransmitterMode();
           }
@@ -755,14 +994,14 @@
       function handleRadiusChange(event) {
         if (
           appState.editTransmitterMode &&
-          transmitterState.selectedTransmitter
+          appState.transmitterState.selectedTransmitter
         ) {
-          transmitterState.selectedTransmitter.radius = parseInt(
+          appState.transmitterState.selectedTransmitter.radius = parseInt(
             event.target.value
           );
           draw();
-        } else if (transmitterState.currentSessionTransmitter) {
-          transmitterState.currentSessionTransmitter.radius = parseInt(
+        } else if (appState.transmitterState.currentSessionTransmitter) {
+          appState.transmitterState.currentSessionTransmitter.radius = parseInt(
             event.target.value
           );
           draw();
@@ -799,25 +1038,27 @@
         if (appState.addTransmitterMode) {
           addButton.classList.add("add-mode");
           radiusSlider.classList.add("visible");
-          audioURLInput.classList.add("visible"); // Show input in add mode
+          audioURLInput.classList.add("visible");
+          deleteButton.classList.add("visible");
           const newTransmitter = createTransmitter(
-            mapState.image.width / 2,
-            mapState.image.height / 2
+            appState.mapState.image.width / 2,
+            appState.mapState.image.height / 2
           );
           // reset audioURLInput value
           audioURLInput.value = "";
-          transmitterState.placedTransmitters.push(newTransmitter);
-          transmitterState.currentSessionTransmitter = newTransmitter;
-          transmitterState.selectedTransmitter = newTransmitter;
+          appState.transmitterState.placedTransmitters.push(newTransmitter);
+          appState.transmitterState.currentSessionTransmitter = newTransmitter;
+          appState.transmitterState.selectedTransmitter = newTransmitter;
           console.log(
-            "transmitterState.selectedTransmitter:",
-            transmitterState.selectedTransmitter
+            "appState.transmitterState.selectedTransmitter:",
+            appState.transmitterState.selectedTransmitter
           );
           draw();
         } else {
           addButton.classList.remove("add-mode");
           radiusSlider.classList.remove("visible");
-          audioURLInput.classList.remove("visible"); // Hide input when exiting add mode
+          audioURLInput.classList.remove("visible");
+          deleteButton.classList.remove("visible");
         }
         updateAddButtonStyle();
         updateNotificationVisibility();
@@ -827,7 +1068,7 @@
       function enterEditTransmitterMode(transmitter) {
         appState.editTransmitterMode = true;
         appState.addTransmitterMode = false;
-        transmitterState.selectedTransmitter = transmitter;
+        appState.transmitterState.selectedTransmitter = transmitter;
         addButton.classList.remove("add-mode"); // Ensure add mode styling is removed
         addButton.classList.add("edit-mode"); // Apply pencil icon
         notification.textContent = "Done";
@@ -835,20 +1076,59 @@
         radiusSlider.classList.add("visible"); // Show slider
         audioURLInput.value = transmitter.audioURL || ""; // Populate input with current audioURL
         audioURLInput.classList.add("visible"); // Show input
+        deleteButton.classList.add("visible");
+        updateNotificationVisibility();
         console.log("Entering edit mode for:", transmitter);
       }
 
       function exitEditTransmitterMode() {
-        if (transmitterState.selectedTransmitter) {
-          playTransmitterAudio(transmitterState.selectedTransmitter);
+        if (appState.transmitterState.selectedTransmitter) {
+          playTransmitterAudio(appState.transmitterState.selectedTransmitter);
         }
         appState.editTransmitterMode = false;
-        transmitterState.selectedTransmitter = null;
+        appState.transmitterState.selectedTransmitter = null;
         addButton.classList.remove("edit-mode"); // Remove pencil icon
         radiusSlider.classList.remove("visible"); // Hide slider
         audioURLInput.classList.remove("visible"); // Hide input
+        deleteButton.classList.remove("visible");
         updateNotificationVisibility();
         console.log("Exiting edit mode");
+      }
+
+      async function loadJsonFromGoogleDrive(event) {
+        try {
+          const shareableLink = event.target.value;
+          const fileId = extractFileIdFromLink(shareableLink);
+          if (!fileId) {
+            throw new Error("Invalid Google Drive link");
+          }
+
+          const fileUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+          const corsProxy = "https://proxy.cors.sh/";
+          let response = await fetch(corsProxy + fileUrl, {
+            headers: {
+              "x-cors-api-key": "temp_ace2a0312fa403641288e3b52e4ad2de",
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error(
+              "Network response was not ok " + response.statusText
+            );
+          }
+
+          let jsonData = await response.json();
+          console.log("jsonData:", jsonData);
+          return jsonData;
+        } catch (error) {
+          console.error("There was a problem with the fetch operation:", error);
+        }
+      }
+
+      function extractFileIdFromLink(link) {
+        const regex = /\/d\/(.*?)(\/|$)/;
+        const match = link.match(regex);
+        return match ? match[1] : null;
       }
 
       function handleNotificationClick() {
@@ -881,6 +1161,68 @@
         draw();
       }
 
+      // Function to download appState as JSON file
+      function downloadAppState() {
+        console.log("downloading appState as JSON file, appState:", appState);
+
+        // Extract the image src and store it in appState
+        if (appState.mapState.image instanceof HTMLImageElement) {
+          appState.mapState.imageSrc = appState.mapState.image.src;
+          delete appState.mapState.image; // Remove the image element
+        }
+
+        const dataStr =
+          "data:text/json;charset=utf-8," +
+          encodeURIComponent(JSON.stringify(appState));
+        const downloadAnchorNode = document.createElement("a");
+        downloadAnchorNode.setAttribute("href", dataStr);
+        downloadAnchorNode.setAttribute("download", "appState.json");
+        document.body.appendChild(downloadAnchorNode);
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
+      }
+
+      // Function to handle file upload and replace appState
+      function handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (!file) {
+          console.error("No file selected");
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          try {
+            const newAppState = JSON.parse(ev.target.result);
+
+            // Convert imageSrc back into an HTMLImageElement
+            if (newAppState.mapState && newAppState.mapState.imageSrc) {
+              const img = new Image();
+              img.src = newAppState.mapState.imageSrc;
+              img.onload = () => {
+                newAppState.mapState.image = img;
+                delete newAppState.mapState.imageSrc;
+
+                Object.assign(appState, newAppState);
+
+                // Restore canvas size
+                canvas.width = appState.mapState.canvasWidth;
+                canvas.height = appState.mapState.canvasHeight;
+                loadMapImage();
+              };
+              console.log("AppState replaced successfully:", appState);
+            } else {
+              Object.assign(appState, newAppState);
+              console.log("AppState replaced successfully:", appState);
+              draw(); // Redraw the canvas with the new appState
+            }
+          } catch (error) {
+            console.error("Error parsing JSON file:", error);
+          }
+        };
+        reader.readAsText(file);
+      }
+
       // --- Event Listeners ---
       canvas.addEventListener("wheel", handleWheel);
       canvas.addEventListener("mousedown", handleMouseDown);
@@ -889,10 +1231,17 @@
       canvas.addEventListener("mouseleave", handleMouseLeave);
       window.addEventListener("resize", handleResize);
       window.addEventListener("keydown", handleKeyDown);
-      addButton.addEventListener("click", toggleAddTransmitterMode);
+      // Event listeners for UI elements
+      addButton.addEventListener("click", handleNotificationClick);
       notification.addEventListener("click", handleNotificationClick);
       radiusSlider.addEventListener("input", handleRadiusChange);
       audioURLInput.addEventListener("input", handleAudioURLChange);
+      deleteButton.addEventListener("click", deleteSelectedTransmitter);
+      gameURLInput.addEventListener("input", loadJsonFromGoogleDrive);
+      // Event listeners for download and upload buttons
+      downloadButton.addEventListener("click", downloadAppState);
+      uploadButton.addEventListener("click", () => uploadFileInput.click());
+      uploadFileInput.addEventListener("change", handleFileUpload);
     </script>
   </body>
 </html>
