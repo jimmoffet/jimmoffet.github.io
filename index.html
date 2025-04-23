@@ -41,6 +41,7 @@
         >
           <span class="front">YES!</span>
         </a>
+        <div class="spinner"></div>
       </div>
       <h3 class="pitch-info">
         Brought to you by former
@@ -262,6 +263,28 @@
 
       .pushable-button:active .front {
         transform: translateY(-2px);
+      }
+      /* When the button receives focus, show the spinner and run the animation */
+      .pushable-button:focus .front {
+        color: transparent; /* hides original text */
+      }
+      .pushable-button:focus .front::after {
+        content: " Let's go…";
+        position: absolute;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: #cfad86;
+      }
+
+      @keyframes spin {
+        /* 10 full rotations in 10 seconds */
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(3600deg);
+        }
       }
 
       .pitch-info {
