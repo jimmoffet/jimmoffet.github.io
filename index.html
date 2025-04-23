@@ -1,1247 +1,667 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <body>
+    <div class="content">
+      <div class="helping-container">
+        <h1 class="helping">ARE YOU HELPING</h1>
+      </div>
+
+      <div class="foreground">
+        <div class="weld-container">
+          <div class="weld-svg-container">
+            <object
+              type="image/svg+xml"
+              data="welder_and_sparks.svg"
+              class="welder"
+            ></object>
+          </div>
+          <div class="with-prime">WITH</div>
+        </div>
+
+        <div class="with-tech-container">
+          <div class="with">WITH</div>
+          <div class="technology-container" aria-label="technology?">
+            <object
+              type="image/svg+xml"
+              data="technology.svg"
+              class="tech-text"
+              aria-label="technology?"
+            ></object>
+          </div>
+        </div>
+      </div>
+
+      <div class="pitch-container">
+        <h2 class="pitch">
+          Are you an ex-federal employee with a govtech business pitch?
+        </h2>
+        <button class="pushable-button">
+          <span class="front"> YES! </span>
+        </button>
+      </div>
+      <h3 class="pitch-info">
+        Brought to you by former
+        <a
+          class="pitch-info"
+          href="https://www.google.com/search?q=I+really+need+a+good+link+for+this&oq=I+really+need+a+good+link+for+this"
+          >civil servants</a
+        >
+      </h3>
+
+      <div class="background">
+        <object
+          class="background-svg"
+          type="image/svg+xml"
+          data="sea_and_planes.svg"
+        ></object>
+      </div>
+    </div>
+  </body>
+
   <head>
-    <title>Transmissions</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Gradient Page</title>
     <style>
-      body,
-      html {
+      * {
         margin: 0;
         padding: 0;
-        overflow: hidden;
-        width: 100%;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
         height: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
       }
 
-      #top-left-nav {
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        display: flex;
-        align-items: center;
+      body {
+        background: linear-gradient(
+          to bottom,
+          #2c6b87 9%,
+          #7ea8b6 58%,
+          #504264 58%,
+          #504264 100%
+        );
+        font-family: Arial, sans-serif;
+        position: relative;
       }
 
-      .top-right-nav {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        display: flex;
-        align-items: center;
-      }
-
-      .center-nav {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .ui-base {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 38px;
-        background-color: lightgray;
-        border: 1px solid darkgray;
-        border-radius: 5px;
-      }
-
-      .mr-10 {
-        margin-right: 10px;
-      }
-
-      .ui-shadow {
-        box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.25);
-      }
-
-      #changeMapButton:before {
-        background: url("mapicon.png");
-        width: 20px;
-        height: 19px;
-        background-size: cover;
-        display: block;
+      /* inset frame */
+      body::before {
         content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 15px solid #cfad86;
+        pointer-events: none;
+        z-index: 100;
       }
 
-      #changeMapButton {
-        padding: 0 10px;
-        user-select: none;
-        cursor: pointer;
-        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-          sans-serif;
-      }
-
-      #addButton {
-        width: 38px;
-        cursor: pointer;
-        user-select: none; /* Prevent text selection */
-      }
-
-      /* Style for the pencil icon in edit mode */
-      #addButton.edit-mode:before {
-        content: "✓"; /* Pencil icon */
-        font-size: 20px;
-      }
-
-      /* Style for the checkmark icon (add mode) */
-      #addButton.add-mode:before {
-        content: "✓"; /* Checkmark icon */
-        font-size: 20px;
-      }
-
-      /* Style for the plus icon (default) */
-      #addButton:not(.edit-mode):not(.add-mode):before {
-        background: url("transmitter.svg");
-        width: 25px;
-        height: 25px;
-        background-size: cover;
-        display: block;
-        content: "";
-      }
-
-      #notification {
-        padding: 0 15px;
-        user-select: none;
-        cursor: pointer;
-        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-          sans-serif;
-      }
-
-      #bottom-left-nav {
-        position: absolute;
-        bottom: 20px;
-        left: 10px;
-        width: 150px;
+      .content {
+        min-height: 100vh; /* Ensure scrollable content */
+        padding: 15px;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        justify-content: space-between;
+        width: 100vw;
+        transform: ; /* or force hardware acceleration: */
       }
 
-      #deleteButton {
-        display: none;
-        width: 38px;
-        cursor: pointer;
-        user-select: none;
+      .helping {
+        text-align: center;
+        color: #7faab9;
+        font-size: 3rem;
+        margin-top: 0.5vh;
+        margin-inline: 3vw;
+        position: relative;
+        z-index: 10;
+        font-family: "magnum";
+        letter-spacing: 0.15em;
+        padding-top: 40px;
       }
 
-      #deleteButton:before {
-        content: "❌"; /* Trash can icon */
-        font-size: 20px;
-      }
-
-      #radiusSlider {
-        display: none;
-      }
-
-      #audioURLInput {
-        display: none;
-        padding: 0 10px;
-        box-sizing: border-box;
-      }
-
-      #deleteButton.visible,
-      #audioURLInput.visible,
-      #radiusSlider.visible {
-        display: flex;
-      }
-
-      #bottom-right-nav {
-        position: absolute;
-        bottom: 20px;
-        right: 10px;
+      .foreground {
+        width: 100%;
+        margin-bottom: 0;
+        position: relative;
+        margin-top: auto;
         display: flex;
         flex-direction: row;
-        align-items: flex-end;
-        gap: 0px;
-      }
-
-      #uploadButton,
-      #downloadButton {
-        display: flex;
-        width: 38px;
-        cursor: pointer;
-        user-select: none;
-      }
-
-      #downloadButton:before {
-        content: "💾"; /* Down arrow icon */
-        font-size: 20px;
-      }
-
-      #uploadButton:before {
-        background: url("upload.svg");
-        width: 20px;
-        height: 20px;
-        background-size: cover;
-        content: "";
-      }
-
-      #downloadButton.visible,
-      #uploadButton.visible {
-        display: flex;
-      }
-
-      #gameURLInput {
-        display: none;
-        padding: 0 10px;
-        box-sizing: border-box;
-      }
-
-      #defaultElement {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
-        overflow: hidden;
       }
 
-      #mapContainer {
+      .weld-container {
+        display: flex;
+        align-items: flex-end; /* Align items to the bottom */
+        flex-direction: row;
+        justify-content: flex-start; /* Align items to the left */
+      }
+
+      .weld-svg-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        /* width: 100%; */
+        margin-top: auto;
+        padding: 0 0.5em;
+        /* max-height: 25rem; */
+        /* height: 25rem; */
+        max-width: 32rem;
+      }
+
+      .welder {
+        width: 100%;
+        z-index: 10;
+        transform: translate(0%, 2%);
+      }
+
+      .with-tech-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100vw;
+        z-index: 10;
+      }
+
+      .with-prime {
+        margin-top: auto; /* Remove margin to eliminate gap */
+        padding-bottom: 0;
+        color: #cfad86;
+        font-size: 2.5rem;
+        font-family: "futura";
+        font-style: italic;
+        z-index: 10;
+        display: flex; /* Add flex to align content */
+        align-items: flex-end; /* Align content to bottom */
+        height: 100%; /* Take up available height */
+        line-height: 1;
+      }
+
+      .with {
+        margin-top: auto; /* Remove margin to eliminate gap */
+        text-align: left;
+        padding-bottom: 0;
+        color: #cfad86;
+        font-size: 2.5rem;
+        font-family: "futura";
+        font-style: italic;
+        z-index: 10;
+        display: flex; /* Add flex to align content */
+        align-items: flex-start; /* Align content to bottom */
+        height: 100%; /* Take up available height */
+        line-height: 1;
+      }
+
+      .technology-container {
+        z-index: 2;
+        letter-spacing: 0.04em;
+        display: flex;
+        align-items: flex-end; /* Align content to bottom */
+        margin-top: auto; /* Push the container to the bottom */
+        max-width: 60rem;
+      }
+
+      .tech-text {
+        width: calc(100vw - 30px);
+      }
+
+      .pitch-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: auto;
+        padding: 0 0.5em;
+      }
+
+      .pitch {
+        text-align: center;
+        color: #cfad86;
+        font-size: 1.4rem;
+        letter-spacing: 0.04em;
+        font-family: "headline";
         position: relative;
-        width: 100%;
-        height: 100%;
+        padding: 1.5rem;
+        z-index: 10;
       }
 
-      #mapCanvas {
-        width: 100%;
-        height: 100%;
+      .pushable-button {
+        background: #cfad86;
+        border-radius: 0.7rem;
+        border: none;
+        padding: 0;
+        margin: 0.75rem;
+        cursor: pointer;
+        outline-offset: 0.4rem;
+        width: 8rem;
       }
 
-      #circleContainer {
+      .front {
+        display: block;
+        padding: 0.7rem 2.3rem;
+        border-radius: 0.7rem;
+        font-size: 1.4rem;
+        font-family: "headline";
+        background: #ce371f;
+        color: #cfad86;
+        transform: translateY(-6px);
+      }
+
+      .pushable-button:active .front {
+        transform: translateY(-2px);
+      }
+
+      .pitch-info {
+        text-align: center;
+        padding-bottom: 0.15rem;
+        color: #cfad86;
+        font-size: 1.4rem;
+        letter-spacing: 0.04em;
+        font-family: "headline";
+        z-index: 10;
+      }
+
+      .background {
         position: absolute;
-        top: 50%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .background-svg {
+        position: absolute;
         left: 50%;
-        transform: translate(-50%, -50%);
-        width: 200px; /* Adjust as needed */
-        height: 200px; /* Adjust as needed */
+        top: 60%;
+        transform: translate(-60%, -50%);
+        width: 100rem;
+        height: 100rem;
+        z-index: -1;
       }
 
-      .circle {
+      @font-face {
+        font-family: "magnum";
+        src: url("magnum.ttf") format("truetype");
+      }
+
+      @font-face {
+        font-family: "headline";
+        src: url("headline.otf") format("opentype");
+      }
+      .helping-container {
+        margin-bottom: auto;
+      }
+
+      .background-svg {
         position: absolute;
-        border: 1.5px solid #ff0000; /* Adjust the border color and width as needed */
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 60%;
+        transform: translate(-60%, -50%);
+        width: 100rem;
+        height: 100rem;
+        z-index: -1;
+      }
+
+      @media (min-width: 0px) {
+        body {
+          background: linear-gradient(
+            to bottom,
+            #2c6b87 9%,
+            #7ea8b6 45%,
+            #504264 45%,
+            #504264 100%
+          );
+        }
+        body::before {
+          border: 0px solid #cfad86;
+        }
+
+        .helping {
+          font-size: 3rem;
+          padding-top: 1.5rem;
+        }
+
+        .background-svg {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-55%, -50%);
+          width: 50rem;
+          z-index: -1;
+        }
+
+        .weld-container {
+          position: relative; /* Added for absolute positioning of with-prime */
+          display: flex;
+          align-items: flex-end;
+          flex-direction: row;
+          justify-content: flex-start;
+        }
+
+        .welder {
+          width: 100vw;
+          max-width: 100vw;
+          height: auto;
+          z-index: 10;
+        }
+
+        .with-prime {
+          position: absolute; /* Overlay on top of welder */
+          font-size: 1.2rem;
+          padding-right: 0.65rem;
+          text-align: right;
+          right: 0; /* Align to the right */
+          top: 50%; /* Vertically center (adjust as needed) */
+          transform: translateY(-50%);
+          z-index: 20; /* Ensure it sits above the svg image */
+        }
+
+        .with {
+          display: none;
+        }
+        .pitch-container {
+          padding-bottom: 20px;
+          flex-direction: column;
+        }
+        .pitch {
+          padding: 1rem;
+        }
+        .pitch-info {
+          padding-bottom: 15px;
+          padding-top: 0;
+          margin: 0;
+          color: #cfad86;
+          font-size: 1.4rem;
+          letter-spacing: 0.04em;
+          font-family: "headline";
+          z-index: 10;
+        }
+        .background-svg {
+          position: absolute;
+          left: 50%;
+          top: 0%;
+          transform: translate(-59%, -25%);
+          width: 300vw;
+          max-height: 190vh;
+          z-index: -1;
+        }
+      }
+      @media (min-width: 360px) {
+        body::before {
+          border: 15px solid #cfad86;
+        }
+        .with-prime {
+          font-size: 1.5rem;
+          padding-right: 1.5rem;
+        }
+      }
+      @media (min-width: 412px) {
+        .helping {
+          font-size: 3.75rem;
+          margin: 0;
+        }
+        .pitch-container {
+          display: flex;
+          align-items: center;
+          width: 100%;
+        }
+        .pitch {
+          order: 1;
+        }
+        .pushable-button {
+          order: 2;
+        }
+        .welder {
+          max-height: 25rem;
+        }
+        .weld-container {
+          flex-direction: row;
+        }
+        .with-prime {
+          font-size: 2rem;
+          padding-right: 1.5rem;
+        }
+        .background-svg {
+          position: absolute;
+          left: 50%;
+          top: 0%;
+          transform: translate(-59%, -23%);
+          width: 300vw;
+          max-height: 190vh;
+          z-index: -1;
+        }
+      }
+
+      @media (min-width: 601px) {
+        body::before {
+          border: 15px solid #cfad86;
+        }
+        h2 {
+          font-size: 2rem;
+        }
+        .content {
+          height: 100vh;
+        }
+        .foreground {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-end;
+          height: 100%;
+        }
+        .weld-container {
+          width: 100vw;
+          max-width: 100vw;
+          justify-content: flex-start;
+          justify-items: flex-start;
+        }
+        .welder {
+          max-width: 70vw;
+          height: auto;
+        }
+        .technology-container {
+          max-width: calc(100% - 30px);
+          padding-left: 30px;
+        }
+        .with-prime {
+          width: 10vw;
+          font-size: 2.5rem;
+          position: relative; /* Overlay on top of welder */
+          text-align: right;
+          z-index: 20; /* Ensure it sits above the svg image */
+        }
+        .pitch-container {
+          flex-direction: column;
+        }
+        .pitch {
+          font-size: 1.6rem;
+          padding: 1.5rem;
+        }
+        .background-svg {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-48%, -55%);
+          width: 150vw;
+          max-height: 190vh;
+          z-index: -1;
+        }
+      }
+
+      @media (min-width: 1000px) {
+        body {
+          background: linear-gradient(
+            to bottom,
+            #2c6b87 9%,
+            #7ea8b6 55%,
+            #504264 55%,
+            #504264 100%
+          );
+        }
+        body::before {
+          border: 15px solid #cfad86;
+        }
+        .content {
+          height: 100vh;
+        }
+        .foreground {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: flex-end;
+          height: 100%;
+        }
+
+        .weld-container {
+          max-width: 45%;
+          min-width: 30rem;
+          display: flex;
+          align-items: flex-end; /* Align items to the bottom */
+          flex-direction: row;
+          justify-content: flex-start; /* Align items to the left */
+        }
+        .weld-svg-container {
+          width: 100%;
+          max-height: 100vh;
+          /* height: 25rem; */
+          /* max-width: 45vw; */
+        }
+        .welder {
+          width: 100%;
+          height: auto;
+          max-height: 100vh;
+        }
+
+        .with-tech-container {
+          width: 50%;
+          max-width: 50rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: flex-start;
+          flex-grow: 1;
+        }
+
+        .with {
+          margin-top: auto;
+          text-align: left;
+          padding-bottom: 0;
+          color: #cfad86;
+          font-size: 2rem;
+          font-family: "futura";
+          font-style: italic;
+          z-index: 10;
+          display: flex;
+          align-items: flex-start;
+          height: 100%;
+          line-height: 1;
+          margin-left: -2rem;
+        }
+        .with-prime {
+          display: none;
+        }
+        .tech-text {
+          max-width: 30rem;
+        }
+        .pitch-container {
+          flex-direction: row;
+          min-height: 10rem;
+        }
+        .pitch {
+          font-size: 2rem;
+        }
+        .background-svg {
+          top: 0%;
+          transform: translate(-48%, -19%);
+        }
+      }
+      @media (min-width: 1240px) {
+        body {
+          background: linear-gradient(
+            to bottom,
+            #2c6b87 9%,
+            #7ea8b6 65%,
+            #504264 65%,
+            #504264 100%
+          );
+        }
+        .helping {
+          font-size: 5rem;
+        }
+        .weld-container {
+          max-width: 45%;
+          min-width: 30rem;
+          display: flex;
+          align-items: flex-end; /* Align items to the bottom */
+          flex-direction: row;
+          justify-content: flex-start; /* Align items to the left */
+        }
+        .weld-svg-container {
+          width: 100%;
+          max-height: 100vh;
+          /* height: 25rem; */
+          max-width: 45vw;
+        }
+        .welder {
+          width: 100%;
+          height: auto;
+          max-height: 100vh;
+        }
+        .with {
+          margin-left: -2.5rem;
+          font-size: 3rem;
+        }
+        .with-tech-container {
+          width: 50%;
+          max-width: 70rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: flex-start;
+          flex-grow: 1; /* This makes it expand vertically to fill available space */
+        }
+        .pitch-container {
+          margin: 0;
+          padding: 0;
+        }
+        .pitch {
+          font-size: 2.5rem;
+        }
+        .background-svg {
+          top: 0%;
+          transform: translate(-48%, -10%);
+          max-height: 80rem;
+        }
+      }
+      @media (min-width: 1920px) {
+        .pitch-container {
+          margin: 0;
+          padding: 0;
+        }
+        .helping {
+          font-size: 6.1rem;
+        }
+        .with {
+          font-size: 4rem;
+        }
+        .pitch {
+          font-size: 4rem;
+        }
+        .background-svg {
+          top: 0%;
+          transform: translate(-48%, 10%);
+          max-height: 80rem;
+        }
       }
     </style>
   </head>
-  <body>
-    <div id="mapContainer">
-      <canvas id="mapCanvas"></canvas>
-      <div id="top-left-nav">
-        <div
-          id="addButton"
-          class="ui-base ui-shadow mr-10"
-          title="Place a transmitter"
-        ></div>
-        <div
-          id="notification"
-          class="ui-base ui-shadow mr-10"
-          title="Place a transmitter"
-        >
-          Add Transmitter
-        </div>
-      </div>
-      <div id="circleContainer"></div>
-      <div id="map-nav" class="center-nav">
-        <div
-          id="changeMapButton"
-          class="ui-base ui-shadow"
-          title="Change map image"
-        ></div>
-      </div>
-      <div id="bottom-left-nav">
-        <div
-          id="deleteButton"
-          class="ui-base ui-shadow mr-10"
-          title="Delete transmitter"
-        ></div>
-        <input
-          type="text"
-          id="audioURLInput"
-          class="ui-base ui-shadow mr-10"
-          placeholder="Enter audio URL"
-        />
-        <input
-          type="range"
-          min="20"
-          max="500"
-          value="200"
-          id="radiusSlider"
-          class="ui-shadow"
-        />
-      </div>
-      <div id="bottom-right-nav">
-        <input
-          type="text"
-          id="gameURLInput"
-          class="ui-base ui-shadow mr-10"
-          placeholder="Load from drive URL"
-        />
-        <div
-          id="downloadButton"
-          class="ui-base ui-shadow mr-10"
-          title="Save game to file"
-        ></div>
-        <div
-          id="uploadButton"
-          class="ui-base ui-shadow mr-10"
-          title="Load game from file"
-        ></div>
-      </div>
-    </div>
-    <input
-      type="file"
-      id="uploadFileInput"
-      style="display: none"
-      accept="application/json"
-    />
-    <input
-      type="file"
-      id="mapFileInput"
-      style="display: none"
-      accept="image/*"
-    />
-
-    <script>
-      // --- Constants ---
-      const DEFAULT_TRANSMITTER_RADIUS = 10;
-      const DEFAULT_TRANSMITTER_COLOR = "red";
-      const AVATAR_MOVE_STEP = 10;
-
-      // --- App State ---
-      const appState = {
-        addTransmitterMode: false,
-        editTransmitterMode: false,
-        notificationText: "Add Transmitter", // Text to display in the notification
-        mapState: {
-          image: new Image(),
-          scale: 1,
-          canvasWidth: 0,
-          canvasHeight: 0,
-          translateX: 0,
-          translateY: 0,
-          isDragging: false, // Map drag
-          minScale: 1,
-          maxScale: 3,
-          dragStartX: 0, // Start X position for the initial drag
-          dragStartY: 0, // Start Y position for the initial drag
-        },
-        transmitterState: {
-          selectedTransmitter: null,
-          isDraggingTransmitter: false, // Circle drag
-          currentSessionTransmitter: null,
-          placedTransmitters: [],
-        },
-      };
-
-      // --- Map State ---
-      appState.mapState = {
-        image: new Image(),
-        scale: 1,
-        translateX: 0,
-        translateY: 0,
-        isDragging: false, // Map drag
-        minScale: 1,
-        maxScale: 3,
-        dragStartX: 0, // Start X position for the initial drag
-        dragStartY: 0, // Start Y position for the initial drag
-      };
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const splashCircle = document.getElementById("circleContainer");
-        const maxRadius = 150; // Set the radius of the largest circle
-        const numCircles = maxRadius / 10; // Adjust the number of circles as needed
-
-        if (appState.mapState.image.src === "") {
-          for (let i = 0; i < numCircles; i++) {
-            const radius = i * ((maxRadius - 30) / numCircles) + 30; // ((maxRadius + 60) / numCircles) * (i + 1); // i * ((120 - 60) / numCircles) + 60;
-            const circle = document.createElement("div");
-            circle.className = "circle";
-            circle.style.width = `${radius * 2 * 0.0625}rem`;
-            circle.style.height = `${radius * 2 * 0.0625}rem`;
-            circle.style.opacity = 1 - i / numCircles;
-            circle.style.left = "50%";
-            circle.style.top = "50%";
-            splashCircle.appendChild(circle);
-          }
-        } else {
-          splashCircle.style.display = "none";
-        }
-      });
-
-      // --- Transmitter State ---
-
-      appState.transmitterState = {
-        selectedTransmitter: null,
-        isDraggingTransmitter: false, // Circle drag
-        currentSessionTransmitter: null,
-        placedTransmitters: [],
-      };
-
-      // --- Avatar State ---
-      const avatarState = {
-        image: new Image(),
-        width: 36,
-        height: 45,
-        x: 0,
-        y: 0,
-      };
-
-      // --- DOM Elements ---
-      const canvas = document.getElementById("mapCanvas");
-      const ctx = canvas.getContext("2d");
-      const addButton = document.getElementById("addButton");
-      const notification = document.getElementById("notification");
-      const radiusSlider = document.getElementById("radiusSlider");
-      const audioURLInput = document.getElementById("audioURLInput");
-      const deleteButton = document.getElementById("deleteButton");
-      const downloadButton = document.getElementById("downloadButton");
-      const uploadButton = document.getElementById("uploadButton");
-      const uploadFileInput = document.getElementById("uploadFileInput");
-
-      // --- Initialization ---
-      const mapImageKey = "mapImageSrc";
-      const mapImageSrc = localStorage.getItem(mapImageKey);
-      console.log("Initial mapImageSrc from localStorage:", mapImageSrc);
-
-      function loadAvatar() {
-        avatarState.image.src = "lilguy.png";
-        avatarState.image.onload = () => {
-          avatarState.x =
-            appState.mapState.image.width / 2 - avatarState.width * 0.5;
-          avatarState.y =
-            appState.mapState.image.height / 2 - avatarState.height * 0.5;
-          console.log(
-            "canvas.width:",
-            canvas.width,
-            "canvas.height:",
-            canvas.height
-          );
-          console.log(
-            "window.innerWidth:",
-            window.innerWidth,
-            "window.innerHeight:",
-            window.innerHeight
-          );
-          console.log(
-            "Avatar loaded and positioned at:",
-            avatarState.x,
-            avatarState.y
-          );
-          console.log("appState.mapState.scale:", appState.mapState.scale);
-          console.log(
-            "appState.mapState.translateX:",
-            appState.mapState.translateX,
-            "appState.mapState.translateY:",
-            appState.mapState.translateY
-          );
-          draw();
-        };
-      }
-
-      function updateUIVisibility() {
-        const isVisible = appState.mapState.image.src !== "";
-        console.log("updateUIVisibility - isVisible:", isVisible);
-        addButton.style.display = isVisible ? "flex" : "none";
-        notification.style.display = isVisible ? "flex" : "none";
-        const mapNav = document.getElementById("map-nav");
-        if (isVisible) {
-          mapNav.classList.remove("center-nav");
-          mapNav.classList.add("top-right-nav");
-        } else {
-          mapNav.classList.remove("top-right-nav");
-          mapNav.classList.add("center-nav");
-        }
-        const bottomRightNav = document.getElementById("bottom-right-nav");
-        bottomRightNav.style.display =
-          appState.addTransmitterMode || appState.editTransmitterMode
-            ? "none"
-            : "flex";
-      }
-
-      function removeSplashCircle(mapImageSrc) {
-        const splashCircle = document.getElementById("circleContainer");
-        splashCircle.style.display = "none";
-      }
-
-      function loadMapImage() {
-        console.log("Map image loaded successfully");
-        removeSplashCircle();
-        resizeCanvas();
-        calculateMinScale();
-        centerImage();
-        updateUIVisibility();
-        draw();
-        loadAvatar();
-      }
-
-      if (mapImageSrc) {
-        console.log("Loading map image from localStorage:", mapImageSrc);
-        appState.mapState.image.src = mapImageSrc;
-        console.log(
-          "appState.mapState.image.src set to:",
-          appState.mapState.image.src
-        );
-        console.log("appState set to:", appState);
-        appState.mapState.image.onload = () => {
-          console.log("Map image loaded successfully");
-          loadMapImage();
-        };
-        appState.mapState.image.onerror = (error) => {
-          console.error("Error loading map image:", error);
-          localStorage.removeItem(mapImageKey); // Clear the invalid image from localStorage
-          showMapUploadDialog(); // Prompt the user to upload a new map image
-        };
-      } else {
-        console.log(
-          "No map image found in localStorage, showing upload dialog"
-        );
-        showMapUploadDialog();
-      }
-
-      document
-        .getElementById("mapFileInput")
-        .addEventListener("change", (event) => {
-          const input = event.target;
-          const file = input.files[0];
-          if (!file) {
-            console.error("No file selected");
-            return;
-          }
-
-          const reader = new FileReader();
-          reader.onload = (ev) => {
-            const mapImageSrc = ev.target.result;
-            console.log("Map image loaded from file input:", mapImageSrc);
-            localStorage.setItem(mapImageKey, mapImageSrc);
-            appState.mapState.image.src = mapImageSrc;
-            console.log(
-              "appState.mapState.image.src set to:",
-              appState.mapState.image.src
-            );
-            console.log("appState set to:", appState);
-            appState.mapState.image.onload = () => {
-              loadMapImage();
-            };
-            appState.mapState.image.onerror = (error) => {
-              console.error("Error loading map image from file input:", error);
-              localStorage.removeItem(mapImageKey); // Clear the invalid image from localStorage
-              showMapUploadDialog(); // Prompt the user to upload a new map image
-            };
-          };
-          // Ensure the file variable is defined and passed correctly
-          if (file) {
-            console.log("File selected:", file);
-            reader.readAsDataURL(file);
-          } else {
-            console.error("No file selected for upload.");
-          }
-        });
-
-      updateUIVisibility();
-
-      document
-        .getElementById("changeMapButton")
-        .addEventListener("click", () => {
-          console.log("Change map button clicked");
-          document.getElementById("mapFileInput").click();
-        });
-
-      function showMapUploadDialog() {
-        console.log("Showing map upload dialog");
-        document.getElementById("mapFileInput").click();
-      }
-
-      // --- Helper Functions ---
-
-      function playTransmitterAudio(transmitter) {
-        if (transmitter.audioURL) {
-          const audio = new Audio(transmitter.audioURL);
-          transmitter.audio = audio;
-          transmitter.audio.loop = true;
-          transmitter.audio.volume = transmitter.distanceToAvatar;
-          transmitter.audio.play().catch((error) => {
-            console.error("Error playing audio:", error);
-          });
-        }
-      }
-
-      function stopTransmitterAudio(transmitter) {
-        if (transmitter.audio) {
-          transmitter.audio.pause();
-          transmitter.audio = null;
-        }
-      }
-
-      function resizeCanvas() {
-        const gameArea = document.getElementById("mapCanvas");
-        canvas.width = gameArea.clientWidth;
-        canvas.height = gameArea.clientHeight;
-
-        // Save canvas dimensions in appState
-        appState.mapState.canvasWidth = canvas.width;
-        appState.mapState.canvasHeight = canvas.height;
-      }
-
-      function calculateMinScale() {
-        const canvasAspectRatio = canvas.width / canvas.height;
-        const imageAspectRatio =
-          appState.mapState.image.width / appState.mapState.image.height;
-
-        appState.mapState.minScale =
-          canvasAspectRatio > imageAspectRatio
-            ? canvas.width / appState.mapState.image.width
-            : canvas.height / appState.mapState.image.height;
-
-        appState.mapState.scale = appState.mapState.minScale;
-      }
-
-      function centerImage() {
-        appState.mapState.translateX =
-          (canvas.width -
-            appState.mapState.image.width * appState.mapState.scale) /
-          2;
-        appState.mapState.translateY =
-          (canvas.height -
-            appState.mapState.image.height * appState.mapState.scale) /
-          2;
-      }
-
-      function getEventCoordinates(event) {
-        const clientX = event.clientX - appState.mapState.translateX;
-        const clientY = event.clientY - appState.mapState.translateY;
-        const x = clientX / appState.mapState.scale;
-        const y = clientY / appState.mapState.scale;
-        return { x: x, y: y };
-      }
-
-      function createTransmitter(x, y) {
-        return {
-          x: x,
-          y: y,
-          radius: parseInt(radiusSlider.value),
-          fillStyle: DEFAULT_TRANSMITTER_COLOR,
-          audioURL: "",
-          audio: null,
-          distanceToAvatar: 0,
-        };
-      }
-
-      function handleAudioURLChange(event) {
-        console.log("handleAudioURLChange called");
-        console.log("event.target.value:", event.target.value);
-        console.log(
-          "appState.editTransmitterMode:",
-          appState.editTransmitterMode
-        );
-        console.log(
-          "appState.transmitterState.selectedTransmitter:",
-          appState.transmitterState.selectedTransmitter
-        );
-        if (appState.transmitterState.selectedTransmitter) {
-          appState.transmitterState.selectedTransmitter.audioURL =
-            event.target.value;
-          console.log("Audio URL:", event.target.value);
-        } else {
-          console.log("No transmitter selected");
-        }
-      }
-
-      function deleteSelectedTransmitter() {
-        if (appState.transmitterState.selectedTransmitter) {
-          stopTransmitterAudio(appState.transmitterState.selectedTransmitter);
-          appState.transmitterState.placedTransmitters =
-            appState.transmitterState.placedTransmitters.filter(
-              (transmitter) =>
-                transmitter !== appState.transmitterState.selectedTransmitter
-            );
-          appState.transmitterState.selectedTransmitter = null;
-          appState.transmitterState.currentSessionTransmitter = null;
-        }
-
-        // set appstate.addTransmitterMode to false
-        appState.addTransmitterMode = false;
-        appState.editTransmitterMode = false;
-
-        // Update UI elements
-        addButton.classList.remove("edit-mode");
-        radiusSlider.classList.remove("visible");
-        audioURLInput.classList.remove("visible");
-        deleteButton.classList.remove("visible");
-        addButton.classList.remove("add-mode");
-        updateNotificationVisibility();
-        draw();
-      }
-
-      // --- Drawing Functions ---
-      function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.save();
-        ctx.translate(
-          appState.mapState.translateX,
-          appState.mapState.translateY
-        );
-        ctx.scale(appState.mapState.scale, appState.mapState.scale);
-
-        drawMap();
-        drawTransmitters();
-        drawAvatar();
-
-        ctx.restore();
-      }
-
-      function drawMap() {
-        ctx.drawImage(appState.mapState.image, 0, 0);
-      }
-
-      function drawTransmitters() {
-        appState.transmitterState.placedTransmitters.forEach(
-          (transmitter, index) => {
-            drawTransmitter(transmitter, index);
-            const distance = calculateDistance(
-              avatarState.x,
-              avatarState.y,
-              transmitter.x,
-              transmitter.y,
-              transmitter.radius
-            );
-            transmitter.distanceToAvatar = distance;
-            if (transmitter.audio) {
-              transmitter.audio.volume = distance;
-            }
-          }
-        );
-      }
-
-      function calculateDistance(x1, y1, x2, y2, radius) {
-        const distance = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
-        if (distance > radius) {
-          return 0;
-        }
-        return 1 - distance / radius;
-      }
-
-      function drawConcentricCircles(
-        ctx,
-        centerX,
-        centerY,
-        radius,
-        color,
-        numCircles,
-        lineWidth
-      ) {
-        for (let i = 0; i < numCircles; i++) {
-          const currRadius = (radius / numCircles) * (i + 1);
-          ctx.beginPath();
-          ctx.arc(transmitter.x, transmitter.y, currRadius, 0, 2 * Math.PI);
-          ctx.strokeStyle = color;
-          ctx.lineWidth = lineWidth; // Set the line width
-          ctx.stroke();
-        }
-      }
-
-      function drawTransmitter(transmitter, seed) {
-        // Style Parameters
-        const colors = [
-          "#DC143C", // Crimson
-          "#32CD32", // LimeGreen
-          "#00BFFF", // DeepSkyBlue
-          "#8B008B", // DarkMagenta
-          "#FF69B4", // HotPink
-          "#8A2BE2", // BlueViolet
-          "#006400", // DarkGreen
-          "#FF8C00", // DarkOrange
-          "#4682B4", // SteelBlue
-          "#B8860B", // DarkGoldenRod
-        ];
-        //const seed = appState.transmitterState.placedTransmitters.length;
-        const colorIndex = seed % colors.length;
-        const circleColor = "#DC143C"; //colors[colorIndex];
-        const numCircles = transmitter.radius / 12; // Number of concentric circles
-        const lineWidth = 2; // Set the desired line width
-
-        // Function to convert hex color to rgba
-        function hexToRgba(hex, alpha) {
-          const bigint = parseInt(hex.slice(1), 16);
-          const r = (bigint >> 16) & 255;
-          const g = (bigint >> 8) & 255;
-          const b = bigint & 255;
-          return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-        }
-
-        // Draw concentric circles
-        for (let i = 0; i < numCircles; i++) {
-          const radius = (transmitter.radius / numCircles) * (i + 1);
-          const opacity = 1 - i / numCircles;
-          const newColor = hexToRgba(circleColor, opacity);
-          ctx.beginPath();
-          ctx.arc(transmitter.x, transmitter.y, radius, 0, 2 * Math.PI);
-          ctx.strokeStyle = newColor;
-          ctx.lineWidth = lineWidth; // Set the line width
-          ctx.stroke();
-        }
-      }
-
-      function drawAvatar() {
-        const aw = avatarState.width / appState.mapState.scale;
-        const ah = avatarState.height / appState.mapState.scale;
-        const x = avatarState.x - aw / 2;
-        const y = avatarState.y - ah / 2;
-        ctx.drawImage(avatarState.image, x, y, aw, ah);
-      }
-
-      // --- Event Handlers ---
-      function handleWheel(event) {
-        event.preventDefault();
-
-        const scaleFactor = event.deltaY > 0 ? 0.9 : 1.1;
-        const newScale = Math.max(
-          appState.mapState.minScale,
-          Math.min(
-            appState.mapState.maxScale,
-            appState.mapState.scale * scaleFactor
-          )
-        );
-        const { x: mouseX, y: mouseY } = getEventCoordinates(event);
-
-        appState.mapState.translateX -=
-          mouseX * (newScale - appState.mapState.scale);
-        appState.mapState.translateY -=
-          mouseY * (newScale - appState.mapState.scale);
-        appState.mapState.scale = newScale;
-
-        // Ensure image covers viewport
-        const scaledWidth =
-          appState.mapState.image.width * appState.mapState.scale;
-        const scaledHeight =
-          appState.mapState.image.height * appState.mapState.scale;
-
-        if (appState.mapState.translateX > 0) appState.mapState.translateX = 0;
-        if (appState.mapState.translateY > 0) appState.mapState.translateY = 0;
-        if (appState.mapState.translateX + scaledWidth < canvas.width)
-          appState.mapState.translateX = canvas.width - scaledWidth;
-        if (appState.mapState.translateY + scaledHeight < canvas.height)
-          appState.mapState.translateY = canvas.height - scaledHeight;
-
-        // If image smaller than viewport in both dimensions, center it.
-        if (scaledWidth < canvas.width && scaledHeight < canvas.height) {
-          centerImage();
-        }
-
-        draw();
-      }
-
-      function isEventTargetingUI(event) {
-        return (
-          event.target === addButton ||
-          event.target === notification ||
-          event.target === radiusSlider
-        );
-      }
-
-      function handleMouseDown(event) {
-        const { x, y } = getEventCoordinates(event);
-
-        if (isEventTargetingUI(event)) {
-          return; // Ignore clicks on UI elements
-        }
-
-        // Check if a placed transmitter is clicked
-        appState.transmitterState.selectedTransmitter = null;
-        for (
-          let i = appState.transmitterState.placedTransmitters.length - 1;
-          i >= 0;
-          i--
-        ) {
-          const transmitter = appState.transmitterState.placedTransmitters[i];
-          if (isInsideCircle({ x, y }, transmitter)) {
-            appState.transmitterState.selectedTransmitter = transmitter;
-            appState.transmitterState.isDraggingTransmitter = true;
-            break;
-          }
-        }
-
-        // Check if we clicked currentSessionTransmitter
-        if (
-          !appState.transmitterState.selectedTransmitter &&
-          appState.transmitterState.currentSessionTransmitter &&
-          isInsideCircle(
-            { x, y },
-            appState.transmitterState.currentSessionTransmitter
-          )
-        ) {
-          appState.transmitterState.selectedTransmitter =
-            appState.transmitterState.currentSessionTransmitter;
-          appState.transmitterState.isDraggingTransmitter = true;
-        }
-
-        if (appState.transmitterState.isDraggingTransmitter) {
-          // If a transmitter is selected, enter edit mode
-          enterEditTransmitterMode(
-            appState.transmitterState.selectedTransmitter
-          );
-        } else {
-          appState.mapState.isDragging = true;
-          appState.mapState.dragStartX =
-            event.clientX - appState.mapState.translateX;
-          appState.mapState.dragStartY =
-            event.clientY - appState.mapState.translateY;
-        }
-      }
-
-      function handleMouseMove(event) {
-        const { x, y } = getEventCoordinates(event);
-
-        if (appState.transmitterState.isDraggingTransmitter) {
-          moveTransmitter(appState.transmitterState.selectedTransmitter, x, y);
-          return;
-        }
-
-        if (!appState.mapState.isDragging) return;
-
-        appState.mapState.translateX =
-          event.clientX - appState.mapState.dragStartX;
-        appState.mapState.translateY =
-          event.clientY - appState.mapState.dragStartY;
-
-        // Ensure image covers viewport
-        const scaledWidth =
-          appState.mapState.image.width * appState.mapState.scale;
-        const scaledHeight =
-          appState.mapState.image.height * appState.mapState.scale;
-
-        if (appState.mapState.translateX > 0) appState.mapState.translateX = 0;
-        if (appState.mapState.translateY > 0) appState.mapState.translateY = 0;
-        if (appState.mapState.translateX + scaledWidth < canvas.width)
-          appState.mapState.translateX = canvas.width - scaledWidth;
-        if (appState.mapState.translateY + scaledHeight < canvas.height)
-          appState.mapState.translateY = canvas.height - scaledHeight;
-
-        draw();
-      }
-
-      function isInsideCircle(point, circle) {
-        const circleTop = circle.y - circle.radius;
-        const circleBottom = circle.y + circle.radius;
-        const circleLeft = circle.x - circle.radius;
-        const circleRight = circle.x + circle.radius;
-        return (
-          point.x >= circleLeft &&
-          point.x <= circleRight &&
-          point.y >= circleTop &&
-          point.y <= circleBottom
-        );
-      }
-
-      function handleMouseUp(event) {
-        if (appState.transmitterState.isDraggingTransmitter) {
-          appState.transmitterState.isDraggingTransmitter = false;
-        } else if (appState.addTransmitterMode) {
-          const { x, y } = getEventCoordinates(event);
-          // If there's a current session transmitter, update its position
-          if (appState.transmitterState.currentSessionTransmitter) {
-            moveTransmitter(
-              appState.transmitterState.currentSessionTransmitter,
-              x,
-              y
-            );
-          }
-          draw();
-        } else if (appState.editTransmitterMode && !isEventTargetingUI(event)) {
-          exitEditTransmitterMode();
-        }
-
-        appState.mapState.isDragging = false;
-      }
-
-      function handleMouseLeave() {
-        appState.mapState.isDragging = false;
-        appState.transmitterState.isDraggingTransmitter = false;
-      }
-
-      function handleResize() {
-        resizeCanvas();
-        calculateMinScale();
-        if (appState.mapState.scale < appState.mapState.minScale) {
-          appState.mapState.scale = appState.mapState.minScale;
-        }
-        centerImage();
-        draw();
-      }
-
-      function handleKeyDown(event) {
-        if (event.key === "Enter") {
-          if (appState.addTransmitterMode) {
-            // Exit addTransmitterMode without pushing the current session transmitter again
-            appState.transmitterState.currentSessionTransmitter = null; // Reset current session transmitter
-            draw();
-            toggleAddTransmitterMode();
-          }
-          if (appState.editTransmitterMode) {
-            exitEditTransmitterMode();
-          }
-        } else {
-          moveAvatar(event);
-        }
-      }
-
-      function handleRadiusChange(event) {
-        if (
-          appState.editTransmitterMode &&
-          appState.transmitterState.selectedTransmitter
-        ) {
-          appState.transmitterState.selectedTransmitter.radius = parseInt(
-            event.target.value
-          );
-          draw();
-        } else if (appState.transmitterState.currentSessionTransmitter) {
-          appState.transmitterState.currentSessionTransmitter.radius = parseInt(
-            event.target.value
-          );
-          draw();
-        }
-      }
-
-      function moveTransmitter(transmitter, x, y) {
-        transmitter.x = x;
-        transmitter.y = y;
-        draw();
-      }
-
-      function updateNotificationVisibility() {
-        if (appState.addTransmitterMode || appState.editTransmitterMode) {
-          notification.textContent = "Done";
-        } else {
-          notification.textContent = appState.notificationText;
-        }
-      }
-
-      function updateAddButtonStyle() {
-        if (appState.addTransmitterMode) {
-          addButton.classList.remove("edit-mode");
-          addButton.classList.add("add-mode");
-        } else {
-          addButton.classList.remove("add-mode");
-        }
-      }
-
-      // --- UI Interactions ---
-      function toggleAddTransmitterMode() {
-        appState.addTransmitterMode = !appState.addTransmitterMode;
-        appState.editTransmitterMode = false; // Exit edit mode if active
-        if (appState.addTransmitterMode) {
-          addButton.classList.add("add-mode");
-          radiusSlider.classList.add("visible");
-          audioURLInput.classList.add("visible");
-          deleteButton.classList.add("visible");
-          const newTransmitter = createTransmitter(
-            appState.mapState.image.width / 2,
-            appState.mapState.image.height / 2
-          );
-          // reset audioURLInput value
-          audioURLInput.value = "";
-          appState.transmitterState.placedTransmitters.push(newTransmitter);
-          appState.transmitterState.currentSessionTransmitter = newTransmitter;
-          appState.transmitterState.selectedTransmitter = newTransmitter;
-          console.log(
-            "appState.transmitterState.selectedTransmitter:",
-            appState.transmitterState.selectedTransmitter
-          );
-          draw();
-        } else {
-          addButton.classList.remove("add-mode");
-          radiusSlider.classList.remove("visible");
-          audioURLInput.classList.remove("visible");
-          deleteButton.classList.remove("visible");
-        }
-        updateAddButtonStyle();
-        updateNotificationVisibility();
-        console.log("addTransmitterMode:", appState.addTransmitterMode);
-      }
-
-      function enterEditTransmitterMode(transmitter) {
-        appState.editTransmitterMode = true;
-        appState.addTransmitterMode = false;
-        appState.transmitterState.selectedTransmitter = transmitter;
-        addButton.classList.remove("add-mode"); // Ensure add mode styling is removed
-        addButton.classList.add("edit-mode"); // Apply pencil icon
-        notification.textContent = "Done";
-        radiusSlider.value = transmitter.radius;
-        radiusSlider.classList.add("visible"); // Show slider
-        audioURLInput.value = transmitter.audioURL || ""; // Populate input with current audioURL
-        audioURLInput.classList.add("visible"); // Show input
-        deleteButton.classList.add("visible");
-        updateNotificationVisibility();
-        console.log("Entering edit mode for:", transmitter);
-      }
-
-      function exitEditTransmitterMode() {
-        if (appState.transmitterState.selectedTransmitter) {
-          playTransmitterAudio(appState.transmitterState.selectedTransmitter);
-        }
-        appState.editTransmitterMode = false;
-        appState.transmitterState.selectedTransmitter = null;
-        addButton.classList.remove("edit-mode"); // Remove pencil icon
-        radiusSlider.classList.remove("visible"); // Hide slider
-        audioURLInput.classList.remove("visible"); // Hide input
-        deleteButton.classList.remove("visible");
-        updateNotificationVisibility();
-        console.log("Exiting edit mode");
-      }
-
-      async function loadJsonFromGoogleDrive(event) {
-        try {
-          const shareableLink = event.target.value;
-          const fileId = extractFileIdFromLink(shareableLink);
-          if (!fileId) {
-            throw new Error("Invalid Google Drive link");
-          }
-
-          const fileUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
-          const corsProxy = "https://proxy.cors.sh/";
-          let response = await fetch(corsProxy + fileUrl, {
-            headers: {
-              "x-cors-api-key": "temp_ace2a0312fa403641288e3b52e4ad2de",
-            },
-          });
-
-          if (!response.ok) {
-            throw new Error(
-              "Network response was not ok " + response.statusText
-            );
-          }
-
-          let jsonData = await response.json();
-          console.log("jsonData:", jsonData);
-          return jsonData;
-        } catch (error) {
-          console.error("There was a problem with the fetch operation:", error);
-        }
-      }
-
-      function extractFileIdFromLink(link) {
-        const regex = /\/d\/(.*?)(\/|$)/;
-        const match = link.match(regex);
-        return match ? match[1] : null;
-      }
-
-      function handleNotificationClick() {
-        if (appState.editTransmitterMode) {
-          exitEditTransmitterMode();
-        } else {
-          toggleAddTransmitterMode();
-        }
-      }
-
-      function moveAvatar(event) {
-        switch (event.key) {
-          case "ArrowUp":
-          case "w":
-            avatarState.y -= AVATAR_MOVE_STEP;
-            break;
-          case "ArrowDown":
-          case "s":
-            avatarState.y += AVATAR_MOVE_STEP;
-            break;
-          case "ArrowLeft":
-          case "a":
-            avatarState.x -= AVATAR_MOVE_STEP;
-            break;
-          case "ArrowRight":
-          case "d":
-            avatarState.x += AVATAR_MOVE_STEP;
-            break;
-        }
-        draw();
-      }
-
-      // Function to download appState as JSON file
-      function downloadAppState() {
-        console.log("downloading appState as JSON file, appState:", appState);
-
-        // Extract the image src and store it in appState
-        if (appState.mapState.image instanceof HTMLImageElement) {
-          appState.mapState.imageSrc = appState.mapState.image.src;
-          delete appState.mapState.image; // Remove the image element
-        }
-
-        const dataStr =
-          "data:text/json;charset=utf-8," +
-          encodeURIComponent(JSON.stringify(appState));
-        const downloadAnchorNode = document.createElement("a");
-        downloadAnchorNode.setAttribute("href", dataStr);
-        downloadAnchorNode.setAttribute("download", "appState.json");
-        document.body.appendChild(downloadAnchorNode);
-        downloadAnchorNode.click();
-        downloadAnchorNode.remove();
-      }
-
-      // Function to handle file upload and replace appState
-      function handleFileUpload(event) {
-        const file = event.target.files[0];
-        if (!file) {
-          console.error("No file selected");
-          return;
-        }
-
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-          try {
-            const newAppState = JSON.parse(ev.target.result);
-
-            // Convert imageSrc back into an HTMLImageElement
-            if (newAppState.mapState && newAppState.mapState.imageSrc) {
-              const img = new Image();
-              img.src = newAppState.mapState.imageSrc;
-              img.onload = () => {
-                newAppState.mapState.image = img;
-                delete newAppState.mapState.imageSrc;
-
-                Object.assign(appState, newAppState);
-
-                // Restore canvas size
-                canvas.width = appState.mapState.canvasWidth;
-                canvas.height = appState.mapState.canvasHeight;
-                loadMapImage();
-              };
-              console.log("AppState replaced successfully:", appState);
-            } else {
-              Object.assign(appState, newAppState);
-              console.log("AppState replaced successfully:", appState);
-              draw(); // Redraw the canvas with the new appState
-            }
-          } catch (error) {
-            console.error("Error parsing JSON file:", error);
-          }
-        };
-        reader.readAsText(file);
-      }
-
-      // --- Event Listeners ---
-      canvas.addEventListener("wheel", handleWheel);
-      canvas.addEventListener("mousedown", handleMouseDown);
-      canvas.addEventListener("mousemove", handleMouseMove);
-      canvas.addEventListener("mouseup", handleMouseUp);
-      canvas.addEventListener("mouseleave", handleMouseLeave);
-      window.addEventListener("resize", handleResize);
-      window.addEventListener("keydown", handleKeyDown);
-      // Event listeners for UI elements
-      addButton.addEventListener("click", handleNotificationClick);
-      notification.addEventListener("click", handleNotificationClick);
-      radiusSlider.addEventListener("input", handleRadiusChange);
-      audioURLInput.addEventListener("input", handleAudioURLChange);
-      deleteButton.addEventListener("click", deleteSelectedTransmitter);
-      gameURLInput.addEventListener("input", loadJsonFromGoogleDrive);
-      // Event listeners for download and upload buttons
-      downloadButton.addEventListener("click", downloadAppState);
-      uploadButton.addEventListener("click", () => uploadFileInput.click());
-      uploadFileInput.addEventListener("change", handleFileUpload);
-    </script>
-  </body>
 </html>
