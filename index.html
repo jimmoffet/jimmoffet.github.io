@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+  <script>
+    var scroll = window.setInterval(function () {
+      window.scrollTo(0, 1);
+    }, 2000);
+  </script>
   <body>
     <div class="content">
       <div class="helping-container">
@@ -61,7 +66,12 @@
 
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=0;"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <title>Are you helping?</title>
 
     <!-- Open Graph meta tags -->
@@ -88,6 +98,9 @@
       name="twitter:image"
       content="https://jimmoffet.github.io/images/og-helping.jpg"
     />
+    <script>
+      window.scrollTo(0, 0);
+    </script>
     <style>
       * {
         margin: 0;
