@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <script>
-    var scroll = window.setInterval(function () {
-      window.scrollTo(0, 1);
-    }, 2000);
-  </script>
   <body>
     <div class="content">
       <div class="helping-container">
@@ -98,9 +93,7 @@
       name="twitter:image"
       content="https://jimmoffet.github.io/images/og-helping.jpg"
     />
-    <script>
-      window.scrollTo(0, 0);
-    </script>
+    <meta name="theme-color" content="#504264" />
     <style>
       * {
         margin: 0;
@@ -340,16 +333,6 @@
         height: 100%;
         overflow: hidden;
         pointer-events: none;
-      }
-
-      .background-svg {
-        position: absolute;
-        left: 50%;
-        top: 60%;
-        transform: translate(-60%, -50%);
-        width: 100rem;
-        height: 100rem;
-        z-index: -1;
       }
 
       @font-face {
@@ -699,8 +682,8 @@
           font-size: 2.5rem;
         }
         .background-svg {
-          top: 0%;
-          transform: translate(-48%, -10%);
+          top: 50%;
+          transform: translate(-48%, -40%);
           max-height: 80rem;
         }
       }
@@ -719,8 +702,8 @@
           font-size: 4rem;
         }
         .background-svg {
-          top: 0%;
-          transform: translate(-48%, 10%);
+          top: 50%;
+          transform: translate(-48%, 40%);
           max-height: 80rem;
         }
       }
