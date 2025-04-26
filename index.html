@@ -12,6 +12,7 @@
           color: #fff;
           padding: 5px;
           z-index: 1000;
+          transform: translateZ(1);
         "
       >
         Viewport:
@@ -166,7 +167,7 @@
         flex-direction: column;
         justify-content: space-between;
         width: 100vw;
-        transform: ; /* or force hardware acceleration: */
+        transform: translateZ(-1);
       }
 
       .helping {
@@ -322,7 +323,8 @@
       .pushable-button:focus .front {
         color: transparent; /* hides original text */
       }
-      .pushable-button:focus .front::after {
+      .pushable-button:focus .front::after,
+      .pushable-button:active .front::after {
         content: " Let's go…";
         position: absolute;
         left: 0;
