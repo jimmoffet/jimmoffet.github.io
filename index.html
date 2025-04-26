@@ -2,6 +2,32 @@
 <html lang="en">
   <body>
     <div class="content">
+      <div
+        id="viewport-dimensions"
+        style="
+          position: fixed;
+          top: 0;
+          left: 0;
+          background: rgba(0, 0, 0, 0.7);
+          color: #fff;
+          padding: 5px;
+          z-index: 1000;
+        "
+      >
+        Viewport:
+      </div>
+      <script>
+        function updateViewportDimensions() {
+          const vw = window.innerWidth;
+          const vh = window.innerHeight;
+          document.getElementById(
+            "viewport-dimensions"
+          ).textContent = `Viewport: ${vw}px × ${vh}px`;
+        }
+
+        window.addEventListener("resize", updateViewportDimensions);
+        window.addEventListener("DOMContentLoaded", updateViewportDimensions);
+      </script>
       <div class="helping-container">
         <h1 class="helping">ARE YOU HELPING</h1>
       </div>
