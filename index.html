@@ -58,23 +58,34 @@
         </div>
       </div>
 
-      <div class="pitch-container">
-        <h2 class="pitch">
-          Are you an ex-federal employee with a govtech business pitch?
-        </h2>
-        <a class="pushable-button" href="https://form.typeform.com/to/RHnEEMbO">
-          <span class="front">YES!</span>
-        </a>
-        <div class="spinner"></div>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          margin-bottom: clamp(0rem, 40vh - 20rem, 5vh);
+          margin-top: clamp(0rem, 32vh - 20rem, 5vh);
+        "
+      >
+        <div class="pitch-container">
+          <h2 class="pitch">
+            Are you an ex-federal employee with a govtech business pitch?
+          </h2>
+          <a
+            class="pushable-button"
+            href="https://form.typeform.com/to/RHnEEMbO"
+          >
+            <span class="front">YES!</span>
+          </a>
+        </div>
+        <h3 class="pitch-info">
+          Brought to you by former
+          <a
+            class="pitch-info"
+            href="https://www.google.com/search?q=I+really+need+a+good+link+for+this&oq=I+really+need+a+good+link+for+this"
+            >civil servants</a
+          >
+        </h3>
       </div>
-      <h3 class="pitch-info">
-        Brought to you by former
-        <a
-          class="pitch-info"
-          href="https://www.google.com/search?q=I+really+need+a+good+link+for+this&oq=I+really+need+a+good+link+for+this"
-          >civil servants</a
-        >
-      </h3>
 
       <div class="background">
         <object
@@ -122,6 +133,14 @@
     />
     <meta name="theme-color" content="#504264" />
     <style>
+      @font-face {
+        font-family: "magnum";
+        src: url("magnum.ttf") format("truetype");
+      }
+      @font-face {
+        font-family: "headline";
+        src: url("headline.otf") format("opentype");
+      }
       * {
         margin: 0;
         padding: 0;
@@ -136,15 +155,10 @@
       }
 
       body {
-        background: linear-gradient(
-          to bottom,
-          #2c6b87 9%,
-          #7ea8b6 58%,
-          #504264 58%,
-          #504264 100%
-        );
+        background-color: #504264;
         font-family: Arial, sans-serif;
         position: relative;
+        background-attachment: scroll;
       }
 
       /* inset frame */
@@ -155,7 +169,6 @@
         left: 0;
         right: 0;
         bottom: 0;
-        border: 15px solid #cfad86;
         pointer-events: none;
         z-index: 100;
       }
@@ -181,18 +194,7 @@
         font-family: "magnum";
         letter-spacing: 0.15em;
         padding-top: 40px;
-      }
-
-      .foreground {
-        width: 100%;
-        margin-bottom: 0;
-        position: relative;
-        margin-top: auto;
-        display: flex;
-        flex-direction: row;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        z-index: 20;
       }
 
       .weld-container {
@@ -202,31 +204,10 @@
         justify-content: flex-start; /* Align items to the left */
       }
 
-      .weld-svg-container {
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        /* width: 100%; */
-        margin-top: auto;
-        padding: 0 0.5em;
-        /* max-height: 25rem; */
-        /* height: 25rem; */
-        max-width: 32rem;
-      }
-
       .welder {
         width: 100%;
         z-index: 10;
         transform: translate(-2%, 2%);
-      }
-
-      .with-tech-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: center;
-        width: 100vw;
-        z-index: 10;
       }
 
       .with-prime {
@@ -301,6 +282,7 @@
         outline-offset: 0.4rem;
         width: 8rem;
         text-decoration: none;
+        z-index: 10;
       }
 
       .front {
@@ -361,38 +343,52 @@
         height: 100%;
         overflow: hidden;
         pointer-events: none;
+        z-index: 1;
+        /* background: linear-gradient(
+                to bottom,
+                #2c6b87 4%,
+                #7ea8b6 25%,
+                #504264 25%,
+                #504264 200%
+              ); */
+        background: linear-gradient(
+            to bottom,
+            #2c6b87 4%,
+            #7ea8b6 25%,
+            #504264 25%,
+            #504264 100%,
+            #504264 200%
+          )
+          no-repeat;
+        background-size: 100% 200%;
       }
 
-      @font-face {
-        font-family: "magnum";
-        src: url("magnum.ttf") format("truetype");
-      }
-
-      @font-face {
-        font-family: "headline";
-        src: url("headline.otf") format("opentype");
-      }
       .helping-container {
         margin-bottom: auto;
       }
 
       @media (min-width: 0px) {
-        body {
-          background: linear-gradient(
-            to bottom,
-            #2c6b87 9%,
-            #7ea8b6 45%,
-            #504264 45%,
-            #504264 100%
-          );
-        }
         body::before {
           border: 0px solid #cfad86;
         }
 
         .helping {
           font-size: 3rem;
-          padding-top: 1.5rem;
+          padding-top: 5vh;
+        }
+
+        .foreground {
+          width: 100%;
+          max-width: 160rem;
+          min-height: fit-content;
+          margin-bottom: 0;
+          position: relative;
+          margin-top: auto;
+          display: flex;
+          flex-direction: row;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-end;
         }
 
         .weld-container {
@@ -403,10 +399,31 @@
           justify-content: flex-start;
         }
 
+        .weld-svg-container {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+          /* width: 100%; */
+          margin-top: auto;
+          padding: 0 0.5em;
+          /* max-height: 25rem; */
+          /* height: 25rem; */
+          /* max-width: 32rem; */
+        }
+
         .welder {
           width: 100vw;
           max-width: 100vw;
           height: auto;
+          z-index: 10;
+        }
+
+        .with-tech-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: center;
+          width: 100vw;
           z-index: 10;
         }
 
@@ -464,7 +481,7 @@
       }
       @media (min-width: 412px) {
         .helping {
-          font-size: 3.75rem;
+          font-size: 4.5rem;
           margin: 0;
         }
         .pitch-container {
@@ -478,9 +495,9 @@
         .pushable-button {
           order: 2;
         }
-        .welder {
-          max-height: 25rem;
-        }
+        /*.welder {
+                max-height: 25rem;
+              }*/
         .weld-container {
           flex-direction: row;
         }
@@ -488,12 +505,13 @@
           font-size: 2rem;
           padding-right: 1.5rem;
         }
+        .background-svg {
+          transform: translate(-59%, 25vh);
+          height: 95vw;
+        }
       }
 
       @media (min-width: 601px) {
-        body::before {
-          border: 15px solid #cfad86;
-        }
         h2 {
           font-size: 2rem;
         }
@@ -501,10 +519,6 @@
           height: 100vh;
         }
         .foreground {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: flex-end;
           height: 100%;
         }
         .weld-container {
@@ -516,6 +530,14 @@
         .welder {
           max-width: 70vw;
           height: auto;
+        }
+        .with-tech-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          align-items: baseline;
+          width: 100vw;
+          z-index: 10;
         }
         .technology-container {
           max-width: calc(100% - 30px);
@@ -532,28 +554,19 @@
           flex-direction: column;
         }
         .pitch {
-          font-size: 1.6rem;
+          font-size: 2.6rem;
           padding: 1.5rem;
         }
+        .pitch-info {
+          font-size: 2rem;
+        }
         .background-svg {
-          transform: translate(-83vw, 25vh);
+          transform: translate(-83vw, 20vh);
           height: 53vw;
         }
       }
 
-      @media (min-width: 1024px) {
-        body {
-          background: linear-gradient(
-            to bottom,
-            #2c6b87 9%,
-            #7ea8b6 55%,
-            #504264 55%,
-            #504264 100%
-          );
-        }
-        body::before {
-          border: 15px solid #cfad86;
-        }
+      @media (min-width: 1025px) {
         .content {
           height: 100vh;
         }
@@ -566,7 +579,7 @@
         }
 
         .weld-container {
-          max-width: 45%;
+          max-width: 55%;
           min-width: 30rem;
           display: flex;
           align-items: flex-end; /* Align items to the bottom */
@@ -576,6 +589,7 @@
         .weld-svg-container {
           width: 100%;
           max-height: 100vh;
+          padding: 0;
           /* height: 25rem; */
           /* max-width: 45vw; */
         }
@@ -586,13 +600,20 @@
         }
 
         .with-tech-container {
-          width: 50%;
-          max-width: 37vw;
+          width: 45%;
+          /*max-width: 37vw;*/
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
           align-items: flex-start;
           flex-grow: 1;
+        }
+
+        .technology-container {
+          max-width: 100%;
+          padding-left: 0;
+          padding-right: 2rem;
+          padding-right: 0.5rem;
         }
 
         .with {
@@ -624,20 +645,11 @@
           font-size: 2rem;
         }
         .background-svg {
-          transform: translate(-83vw, 25vh);
+          transform: translate(-83vw, 20vh);
           height: 53vw;
         }
       }
       @media (min-width: 1216px) {
-        body {
-          background: linear-gradient(
-            to bottom,
-            #2c6b87 9%,
-            #7ea8b6 65%,
-            #504264 65%,
-            #504264 100%
-          );
-        }
         .helping {
           font-size: 5rem;
         }
@@ -668,7 +680,7 @@
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
-          align-items: flex-start;
+          align-items: baseline;
           flex-grow: 1; /* This makes it expand vertically to fill available space */
         }
         .pitch-container {
@@ -678,18 +690,17 @@
         .pitch {
           font-size: 2.5rem;
         }
+        .pitch-info {
+          font-size: 2rem;
+        }
         .background-svg {
-          transform: translate(-83vw, 25vh);
-          height: 53vw;
+          transform: translate(-65vw, 15vh);
+          height: 45vw;
         }
       }
       @media (min-width: 1920px) {
-        .pitch-container {
-          margin: 0;
-          padding: 0;
-        }
         .helping {
-          font-size: 6.1rem;
+          font-size: 7rem;
         }
         .with {
           font-size: 4rem;
@@ -698,7 +709,7 @@
           font-size: 4rem;
         }
         .background-svg {
-          transform: translate(-70vw, 25vh);
+          transform: translate(-70vw, 15vh);
           height: 45vw;
         }
       }
