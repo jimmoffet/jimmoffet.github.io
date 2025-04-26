@@ -217,7 +217,7 @@
       .welder {
         width: 100%;
         z-index: 10;
-        transform: translate(0%, 2%);
+        transform: translate(-2%, 2%);
       }
 
       .with-tech-container {
@@ -277,7 +277,7 @@
         align-items: center;
         width: 100%;
         margin-top: auto;
-        padding: 0 0.5em;
+        padding: 0;
       }
 
       .pitch {
@@ -376,16 +376,6 @@
         margin-bottom: auto;
       }
 
-      .background-svg {
-        position: absolute;
-        left: 50%;
-        top: 60%;
-        transform: translate(-60%, -50%);
-        width: 100rem;
-        height: 100rem;
-        z-index: -1;
-      }
-
       @media (min-width: 0px) {
         body {
           background: linear-gradient(
@@ -403,15 +393,6 @@
         .helping {
           font-size: 3rem;
           padding-top: 1.5rem;
-        }
-
-        .background-svg {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-55%, -50%);
-          width: 50rem;
-          z-index: -1;
         }
 
         .weld-container {
@@ -461,12 +442,14 @@
           z-index: 10;
         }
         .background-svg {
-          position: absolute;
+          position: fixed;
           left: 50%;
           top: 0%;
-          transform: translate(-59%, -25%);
-          width: 300vw;
-          max-height: 190vh;
+          transform: translate(-59%, 22vh);
+          width: auto;
+          max-width: auto;
+          height: 95vw;
+          max-height: none;
           z-index: -1;
         }
       }
@@ -504,15 +487,6 @@
         .with-prime {
           font-size: 2rem;
           padding-right: 1.5rem;
-        }
-        .background-svg {
-          position: absolute;
-          left: 50%;
-          top: 0%;
-          transform: translate(-59%, -25%);
-          width: 300vw;
-          max-height: 190vh;
-          z-index: -1;
         }
       }
 
@@ -562,17 +536,12 @@
           padding: 1.5rem;
         }
         .background-svg {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-48%, -55%);
-          width: 150vw;
-          max-height: 190vh;
-          z-index: -1;
+          transform: translate(-83vw, 25vh);
+          height: 53vw;
         }
       }
 
-      @media (min-width: 1000px) {
+      @media (min-width: 1024px) {
         body {
           background: linear-gradient(
             to bottom,
@@ -655,11 +624,11 @@
           font-size: 2rem;
         }
         .background-svg {
-          top: 0%;
-          transform: translate(-48%, -19%);
+          transform: translate(-83vw, 25vh);
+          height: 53vw;
         }
       }
-      @media (min-width: 1240px) {
+      @media (min-width: 1216px) {
         body {
           background: linear-gradient(
             to bottom,
@@ -710,9 +679,8 @@
           font-size: 2.5rem;
         }
         .background-svg {
-          top: 50%;
-          transform: translate(-48%, -40%);
-          max-height: 80rem;
+          transform: translate(-83vw, 25vh);
+          height: 53vw;
         }
       }
       @media (min-width: 1920px) {
@@ -730,9 +698,8 @@
           font-size: 4rem;
         }
         .background-svg {
-          top: 50%;
-          transform: translate(-48%, 40%);
-          max-height: 80rem;
+          transform: translate(-70vw, 25vh);
+          height: 45vw;
         }
       }
     </style>
