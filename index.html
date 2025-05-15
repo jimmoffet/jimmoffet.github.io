@@ -1,34 +1,10 @@
-<!DOCTYPE html>
+<!--
+Title: Pitch us
+Link: /pitch
+-->
 <html lang="en">
   <body>
     <div class="content">
-      <!-- <div
-        id="viewport-dimensions"
-        style="
-          position: fixed;
-          top: 0;
-          left: 0;
-          background: rgba(0, 0, 0, 0.7);
-          color: #fff;
-          padding: 5px;
-          z-index: 1000;
-          transform: translateZ(1);
-        "
-      >
-        Viewport:
-      </div>
-      <script>
-        function updateViewportDimensions() {
-          const vw = window.innerWidth;
-          const vh = window.innerHeight;
-          document.getElementById(
-            "viewport-dimensions"
-          ).textContent = `Viewport: ${vw}px × ${vh}px`;
-        }
-
-        window.addEventListener("resize", updateViewportDimensions);
-        window.addEventListener("DOMContentLoaded", updateViewportDimensions);
-      </script> -->
       <div class="helping-container">
         <h1 class="helping">ARE YOU HELPING</h1>
       </div>
@@ -38,8 +14,9 @@
           <div class="weld-svg-container">
             <object
               type="image/svg+xml"
-              data="welder_and_sparks.svg"
+              data="https://jimmoffet.github.io/welder_and_sparks.svg"
               class="welder"
+              style="width: 450px; height: 312px"
             ></object>
           </div>
           <div class="with-prime">WITH</div>
@@ -50,8 +27,9 @@
           <div class="technology-container" aria-label="technology?">
             <object
               type="image/svg+xml"
-              data="technology.svg"
+              data="https://jimmoffet.github.io/technology.svg"
               class="tech-text"
+              style="height: 100%"
               aria-label="technology?"
             ></object>
           </div>
@@ -91,7 +69,7 @@
         <object
           class="background-svg"
           type="image/svg+xml"
-          data="sea_and_planes.svg"
+          data="https://jimmoffet.github.io/sea_and_planes.svg"
         ></object>
       </div>
     </div>
@@ -135,18 +113,17 @@
     <style>
       @font-face {
         font-family: "magnum";
-        src: url("magnum.ttf") format("truetype");
+        src: url("https://jimmoffet.github.io/magnum.ttf") format("truetype");
       }
       @font-face {
         font-family: "headline";
-        src: url("headline.otf") format("opentype");
+        src: url("https://jimmoffet.github.io/headline.otf") format("opentype");
       }
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-
       html,
       body {
         height: 100%;
