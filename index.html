@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
     <!-- Chosen Palette: Warm Neutral with Teal Accent -->
-    <!-- Application Structure Plan: A thematic, non-linear dashboard structure is used to guide the user from the high-level problem to the specific solution and its value proposition. The flow is: 1) Hero section with a "wow" number to grab attention. 2) "The Problem" section with interactive elements to let users feel the pain point of wasted time and cost. 3) "The Solution" section with a clear before/after diagram. 4) "The Impact" section, an interactive dashboard to explore savings for specific funders. 5) "The Value Proposition" section, an ROI-focused view for potential funders. This structure is chosen over a linear report format to make complex data digestible and engaging, allowing different users (nonprofits, funders) to find relevant information quickly. -->
+    <!-- Application Structure Plan: A thematic, non-linear dashboard structure is used to guide the user from the high-level problem to the specific solution and its value proposition. The flow is: 1) Hero section with a "wow" number to grab attention. 2) "The Problem" section with interactive elements to let users feel the pain point of wasted time and cost. 3) "The Solution" section with a clear before/after diagram. 4) "The Impact" section, an interactive dashboard to explore savings for specific funders. 5) "The Value Proposition" section, an ROI-focused view for potential funders. This structure is chosen over a linear report format to make complex data digestible and engaging. -->
     <!-- Visualization & Content Choices: The report's quantitative data is translated into interactive visualizations to enhance understanding. 1) Grant Writer Time (Report Info) -> Goal: Show inefficiency -> Viz: Donut Chart (Chart.js) -> Interaction: Hover to see details -> Justification: Quickly communicates the 40/60 split of wasted effort. 2) Grant Cost (Report Info) -> Goal: Personalize the cost -> Viz: Interactive buttons updating text fields (JS) -> Interaction: User clicks to see true cost -> Justification: More engaging than a static table. 3) Funder Savings (Report Info) -> Goal: Show large-scale impact -> Viz: Bar Chart (Chart.js) -> Interaction: Dropdown to filter data by funder -> Justification: Manages a large dataset, making it explorable and focused. 4) Budget/ROI (Report Info) -> Goal: Justify the 'ask' to funders -> Viz: Tiered cards and a Donut Chart -> Interaction: Hover/Click -> Justification: Clearly presents the business case and operational plan. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
@@ -281,8 +281,9 @@
           <h3 class="text-3xl md:text-4xl font-bold">Quantifying the Impact</h3>
           <p class="mt-4 text-lg text-stone-600 max-w-3xl mx-auto">
             By automating 40% of application work, the CommonGrants protocol can
-            redirect millions of dollars for grantees of major foundations.
-            Select a funder below to see the estimated annual savings.
+            redirect millions of dollars and thousands of hours for grantees of
+            major foundations. Select a funder below to see the estimated annual
+            savings.
           </p>
         </div>
 
@@ -528,10 +529,18 @@
             labels: ["Annual Hours Saved", "Annual Value Unlocked"],
             datasets: [
               {
-                label: "Impact",
-                data: [selectedData.hours, selectedData.savings],
-                backgroundColor: ["#f59e0b", "#0d9488"],
+                label: "Annual Value Unlocked",
+                data: [null, selectedData.savings],
+                backgroundColor: "#0d9488",
                 barThickness: 50,
+                xAxisID: "x",
+              },
+              {
+                label: "Annual Hours Saved",
+                data: [selectedData.hours, null],
+                backgroundColor: "#f59e0b",
+                barThickness: 50,
+                xAxisID: "x1",
               },
             ],
           };
@@ -548,12 +557,40 @@
               maintainAspectRatio: false,
               indexAxis: "y",
               scales: {
-                x: {
+                y: {
                   beginAtZero: true,
+                },
+                x: {
+                  // Bottom axis for Dollars
+                  type: "linear",
+                  position: "bottom",
+                  title: {
+                    display: true,
+                    text: "Value Unlocked ($)",
+                  },
                   ticks: {
                     callback: function (value) {
-                      if (value > 500000) return formatCurrency(value); // Only format y axis as currency
-                      return formatNumber(value);
+                      return formatCurrency(value);
+                    },
+                  },
+                  grid: {
+                    drawOnChartArea: false,
+                  },
+                },
+                x1: {
+                  // Top axis for Hours
+                  type: "linear",
+                  position: "top",
+                  max: selectedData.savings / 50,
+                  title: {
+                    display: true,
+                    text: "Hours Saved",
+                  },
+                  ticks: {
+                    callback: function (value) {
+                      if (value >= 1e6) return (value / 1e6).toFixed(1) + "M";
+                      if (value >= 1e3) return (value / 1e3).toFixed(0) + "K";
+                      return value;
                     },
                   },
                 },
@@ -568,7 +605,7 @@
                         label += ": ";
                       }
                       if (context.parsed.x !== null) {
-                        if (context.label.includes("Value")) {
+                        if (context.dataset.label.includes("Value")) {
                           label += formatCurrency(context.parsed.x);
                         } else {
                           label += formatNumber(context.parsed.x);
