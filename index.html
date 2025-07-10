@@ -17,6 +17,134 @@
     <!-- Visualization & Content Choices: The report's quantitative data is translated into interactive visualizations to enhance understanding. 1) Grant Writer Time (Report Info) -> Goal: Show inefficiency -> Viz: Donut Chart (Chart.js) -> Interaction: Hover to see details -> Justification: Quickly communicates the 40/60 split of wasted effort. 2) Grant Cost (Report Info) -> Goal: Personalize the cost -> Viz: Interactive buttons updating text fields (JS) -> Interaction: User clicks to see true cost -> Justification: More engaging than a static table. 3) Funder Savings (Report Info) -> Goal: Show large-scale impact -> Viz: Bar Chart (Chart.js) -> Interaction: Dropdown to filter data by funder -> Justification: Manages a large dataset, making it explorable and focused. 4) Budget/ROI (Report Info) -> Goal: Justify the 'ask' to funders -> Viz: Tiered cards and a Donut Chart -> Interaction: Hover/Click -> Justification: Clearly presents the business case and operational plan. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
+      /* ─── ERIC MEYER RESET ────────────────────────────────────────────────────── */
+      /* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 | Public Domain */
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      /* HTML5 display-role reset for older browsers */
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+      body {
+        line-height: 1;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+      blockquote,
+      q {
+        quotes: none;
+      }
+      blockquote::before,
+      blockquote::after,
+      q::before,
+      q::after {
+        content: "";
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      /* ─── END RESET ──────────────────────────────────────────────────────────── */
+
       body {
         font-family: "Inter", sans-serif;
       }
