@@ -1,5 +1,5 @@
 /**
- * 👂-Say Game JavaScript
+ * Banana Phone JavaScript
  * 
  * This file contains the game logic for the reverse audio copycat game.
  * 
