@@ -9,7 +9,7 @@
  * 3. Users record "attempt" clips trying to mimic the reversed target
  * 4. Game ends when "Finish" button is pressed
  * 5. All clips are displayed and can be played back (in revers        console.log('Target clip recorded:', targetClip);
-        this.status.textContent = `Tap and try to imitate it!`;
+        this.status.textContent = `Tap and try to imitate it!  (Turn up your volume)`;
         // this.status.textContent = 'Target recorded! Recording your attempts...';
         
         // Start target playback loop after 1 second delay
@@ -433,7 +433,7 @@ class GameController {
         this.updateUrlWithGameKey();
         
         console.log('Target clip recorded:', targetClip);
-        this.status.textContent = `Tap and try to imitate it!`;
+        this.status.textContent = `Tap and try to imitate it! (Turn up your volume)`;
         // this.status.textContent = 'Target recorded! Recording your attempts...';
         this.startOverSection.style.display = 'block';
         

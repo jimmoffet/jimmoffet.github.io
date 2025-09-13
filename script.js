@@ -516,7 +516,7 @@ class AudioRecorder {
         console.log('Rendering clips. Total:', this.clips.length);
         
         if (this.clips.length === 0) {
-            this.clipsList.innerHTML = '<div class="no-clips">No recordings yet. Click the ear to play the game!</div>';
+            this.clipsList.innerHTML = '<div class="no-clips">No recordings yet. Click the 🍌 to play the game!</div>';
             this.clearAllButton.style.display = 'none';
             return;
         }
