@@ -1,6 +1,5 @@
 {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.rulers": [120],
     "editor.showUnused": true,
     "editor.wordWrap": "wordWrapColumn",
@@ -20,10 +19,10 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[shellscript]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format"
+        "editor.defaultFormatter": "timonwong.shellcheck"
     },
     "[dotenv]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format"
+        "editor.defaultFormatter": "IronGeek.vscode-env"
     },
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
