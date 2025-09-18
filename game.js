@@ -350,6 +350,16 @@ class GameController {
    * Behavior changes based on current game phase
    */
   async handleRecordButtonClick() {
+    try {
+      // Resume AudioContext on user interaction to enable subsequent automatic playback on mobile
+      if (this.audioContext.state === "suspended") {
+        await this.audioContext.resume();
+        console.log("AudioContext resumed on user interaction");
+      }
+    } catch (error) {
+      console.warn("Failed to resume AudioContext:", error);
+    }
+
     if (this.isRecording) {
       await this.stopRecording();
     } else {
@@ -554,6 +564,15 @@ class GameController {
         // Resume audio context if needed
         if (this.audioContext.state === "suspended") {
           await this.audioContext.resume();
+          console.log("AudioContext resumed for target playback");
+        }
+
+        // Check if AudioContext is running
+        if (this.audioContext.state !== "running") {
+          console.warn("AudioContext not running:", this.audioContext.state);
+          throw new Error(
+            `AudioContext state is ${this.audioContext.state}, expected 'running'`
+          );
         }
 
         // Decode the target clip
@@ -836,6 +855,8 @@ class GameController {
     this.isPlayingAll = true;
     this.currentPlayAllIndex = -1; // Start with -1 to play target first
     this.playAllButton.textContent = "⏹️ Stop Loop";
+    // give playAllButton the playing class
+    this.playAllButton.classList.add("playing");
 
     console.log(
       "Starting play all sequence (target + attempts) - will loop continuously"
@@ -925,6 +946,9 @@ class GameController {
     // Stop any currently playing audio
     this.stopAllGameClipPlayback();
 
+    // remove playing class from playAllButton
+    this.playAllButton.classList.remove("playing");
+
     console.log("Play all sequence stopped");
   }
 
@@ -977,5 +1001,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     console.log("Initializing game controller...");
     gameController = new GameController();
+  }
+});
+
+// Resume audio context on any user interaction (fallback for mobile)
+document.addEventListener("click", async () => {
+  if (gameController && gameController.audioContext) {
+    if (gameController.audioContext.state === "suspended") {
+      try {
+        await gameController.audioContext.resume();
+        console.log("AudioContext resumed on user interaction (game page)");
+      } catch (error) {
+        console.warn("Failed to resume AudioContext on game page:", error);
+      }
+    }
   }
 });

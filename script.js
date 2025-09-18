@@ -795,12 +795,21 @@ class AudioRecorder {
    * Update the play all button UI for a specific game
    */
   updatePlayAllButton(gameId, isPlaying) {
+    console.log("updatePlayAllButton called:", { gameId, isPlaying });
     const button = document.querySelector(
       `.play-all-button[data-game-id="${gameId}"]`
     );
+    console.log(
+      "Button found:",
+      button,
+      "Selector:",
+      `.play-all-button[data-game-id="${gameId}"]`
+    );
     if (button) {
+      console.log("Before update - classes:", button.classList.toString());
       button.textContent = isPlaying ? "⏹️ Stop" : "▶️ Listen";
       button.classList.toggle("playing", isPlaying);
+      console.log("After update - classes:", button.classList.toString());
     } else {
       console.warn("Play all button not found for game:", gameId);
     }
@@ -977,9 +986,17 @@ function debugAudio() {
 window.debugStorage = debugStorage;
 window.debugAudio = debugAudio;
 
-// Log when audio context state changes
-document.addEventListener("click", () => {
+// Resume audio context on user interaction and log state changes
+document.addEventListener("click", async () => {
   if (recorder && recorder.audioContext) {
+    if (recorder.audioContext.state === "suspended") {
+      try {
+        await recorder.audioContext.resume();
+        console.log("AudioContext resumed on user interaction (history page)");
+      } catch (error) {
+        console.warn("Failed to resume AudioContext on history page:", error);
+      }
+    }
     console.log(
       "AudioContext state after user interaction:",
       recorder.audioContext.state
