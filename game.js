@@ -915,7 +915,7 @@ class GameController {
   stopPlayAll() {
     this.isPlayingAll = false;
     this.currentPlayAllIndex = 0;
-    this.playAllButton.textContent = "▶️ Play All";
+    this.playAllButton.textContent = "▶️ Listen";
 
     if (this.playAllTimeout) {
       clearTimeout(this.playAllTimeout);

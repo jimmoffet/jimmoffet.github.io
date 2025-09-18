@@ -150,7 +150,10 @@ body {
 }
 
 .recorder-section {
-  background: rgba(255, 255, 255, 0.95);
+  /* background: rgba(255, 255, 255, 0.95); */
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: 15px;
   padding: 2rem;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -237,6 +240,7 @@ body {
   padding: 2rem;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   border: 1.5px solid var(--color-primary-dark-green);
+  margin-bottom: 3rem;
 }
 
 .clips-header {

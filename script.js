@@ -4,7 +4,6 @@ class AudioRecorder {
     this.audioContext = null;
     this.chunks = [];
     this.isRecording = false;
-    this.clips = StorageService.getAllClips();
     this.clipDurations = {}; // Store durations for each clip ID
     this.currentSource = null;
     this.isPlaying = false;
@@ -33,7 +32,7 @@ class AudioRecorder {
     this.init();
     console.log(
       "AudioRecorder initialized. Clips in storage:",
-      this.clips.length
+      StorageService.getAllClips().length
     );
   }
 
@@ -68,9 +67,10 @@ class AudioRecorder {
   }
 
   async loadClipDurations() {
-    console.log("Loading durations for", this.clips.length, "clips...");
+    const clips = StorageService.getAllClips();
+    console.log("Loading durations for", clips.length, "clips...");
 
-    for (const clip of this.clips) {
+    for (const clip of clips) {
       try {
         // Skip if we already have the duration
         if (this.clipDurations[clip.id]) continue;
@@ -99,7 +99,8 @@ class AudioRecorder {
   }
 
   async loadClipDuration(clipId) {
-    const clip = this.clips.find((c) => c.id === clipId);
+    const clips = StorageService.getAllClips();
+    const clip = clips.find((c) => c.id === clipId);
     if (!clip) return;
 
     try {
@@ -207,11 +208,10 @@ class AudioRecorder {
 
         // Save using centralized storage service
         StorageService.saveClip(clip);
-        this.clips.push(clip);
 
         console.log(
           "Clip saved to localStorage. Total clips:",
-          this.clips.length
+          StorageService.getAllClips().length
         );
         console.log("Clip details:", {
           id: clip.id,
@@ -238,7 +238,8 @@ class AudioRecorder {
     try {
       console.log(`Playing clip ${clipId}, reverse: ${reverse}`);
 
-      const clip = this.clips.find((c) => c.id === clipId);
+      const clips = StorageService.getAllClips();
+      const clip = clips.find((c) => c.id === clipId);
       if (!clip) {
         console.error("Clip not found:", clipId);
         return;
@@ -538,8 +539,10 @@ class AudioRecorder {
   deleteClip(clipId) {
     console.log("Deleting clip:", clipId);
     StorageService.deleteClips([clipId]);
-    this.clips = this.clips.filter((clip) => clip.id !== clipId);
-    console.log("Clip deleted. Remaining clips:", this.clips.length);
+    console.log(
+      "Clip deleted. Remaining clips:",
+      StorageService.getAllClips().length
+    );
     this.renderClips();
   }
 
@@ -547,7 +550,6 @@ class AudioRecorder {
     if (confirm("Are you sure you want to delete all recordings?")) {
       console.log("Clearing all clips...");
       StorageService.clearAllClips();
-      this.clips = [];
       console.log("All clips cleared");
       this.renderClips();
     }
@@ -565,9 +567,10 @@ class AudioRecorder {
   }
 
   renderClips() {
-    console.log("Rendering clips. Total:", this.clips.length);
+    const clips = StorageService.getAllClips();
+    console.log("Rendering clips. Total:", clips.length);
 
-    if (this.clips.length === 0) {
+    if (clips.length === 0) {
       this.clipsList.innerHTML =
         '<div class="no-clips">No recordings yet. Click the 🍌 to play the game!</div>';
       this.clearAllButton.style.display = "none";
@@ -603,12 +606,12 @@ class AudioRecorder {
                         <button class="play-all-button ${isPlayingAll ? "playing" : ""}" 
                                 onclick="recorder.toggleGamePlayAll('${gameId}')"
                                 data-game-id="${gameId}">
-                            ${isPlayingAll ? "⏹️ Stop" : "▶️ Play All"}
+                            ${isPlayingAll ? "⏹️ Stop" : "▶️ Listen"}
                         </button>
                         <button class="delete-game-button" 
                                 onclick="recorder.deleteGame('${gameId}')" 
                                 title="Delete entire game">
-                            Delete All
+                            Delete
                         </button>
                     </div>
                 </div>
@@ -796,7 +799,7 @@ class AudioRecorder {
       `.play-all-button[data-game-id="${gameId}"]`
     );
     if (button) {
-      button.textContent = isPlaying ? "⏹️ Stop" : "▶️ Play All";
+      button.textContent = isPlaying ? "⏹️ Stop" : "▶️ Listen";
       button.classList.toggle("playing", isPlaying);
     } else {
       console.warn("Play all button not found for game:", gameId);
@@ -816,37 +819,24 @@ class AudioRecorder {
       this.stopGamePlayAll();
     }
 
-    // Find and delete all clips from this game
-    const gameGroups = this.groupClipsByGame();
-    const gameGroup = gameGroups.find(
-      (group) => `game-${group.gameStartTime}` === gameId
-    );
+    // Extract gameStartTime from gameId (format: "game-1234567890")
+    const gameStartTime = parseInt(gameId.replace("game-", ""));
 
-    if (gameGroup) {
-      gameGroup.clips.forEach((clip) => {
-        this.clips = this.clips.filter((c) => c.id !== clip.id);
-      });
+    // Delete through StorageService
+    const deletedCount = StorageService.deleteGameByStartTime(gameStartTime);
 
-      // Update storage
-      StorageService.saveAllClips(this.clips);
+    console.log("Deleted game:", gameId, "clips removed:", deletedCount);
 
-      console.log(
-        "Deleted game:",
-        gameId,
-        "clips removed:",
-        gameGroup.clips.length
-      );
-    }
-
-    // Re-render clips
+    // Re-render clips (this will fetch fresh data from StorageService)
     this.renderClips();
   }
 
   groupClipsByGame() {
     // Group clips by gameStartTime, fallback to individual clips if no game metadata
     const games = {};
+    const clips = StorageService.getAllClips();
 
-    this.clips.forEach((clip) => {
+    clips.forEach((clip) => {
       const gameKey = clip.gameStartTime || clip.timestamp; // Fallback for old clips
       if (!games[gameKey]) {
         games[gameKey] = {
@@ -876,13 +866,18 @@ class AudioRecorder {
     const now = Date.now();
     const gameTime = new Date(timestamp);
     const diffMs = now - timestamp;
+    const diffMinutes = Math.floor(diffMs / (1000 * 60));
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
-    if (diffDays === 0) {
-      // Today - show time
-      return `Game at ${gameTime.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`;
+    if (diffMinutes < 60) {
+      // Less than an hour ago
+      return `Game played ${diffMinutes} minute${diffMinutes !== 1 ? "s" : ""} ago`;
+    } else if (diffHours < 24) {
+      // Less than a day ago
+      return `Game played ${diffHours} hour${diffHours !== 1 ? "s" : ""} ago`;
     } else if (diffDays === 1) {
-      return "Game yesterday";
+      return "Game played yesterday";
     } else {
       return `Game ${diffDays} days ago`;
     }
