@@ -1,48 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>👋🍌🙋‍♂️</title>
-    
+
     <!-- Primary Meta Tags -->
-    <meta name="description" content="Record, reverse, imitate, laugh!">
-    <meta name="keywords" content="audio game, voice recording, reverse audio, challenge, fun, browser game, banana phone">
-    
+    <meta name="description" content="Record, reverse, imitate, laugh!" />
+    <meta
+      name="keywords"
+      content="audio game, voice recording, reverse audio, challenge, fun, browser game, banana phone"
+    />
+
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yobananaboy.lol">
-    <meta property="og:title" content="The 🍌☎️ is calling...">
-    <meta property="og:description" content="Record, reverse, imitate, laugh!">
-    <meta property="og:image" content="https://yobananaboy.lol/bananaphone_256px.png">
-    
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yobananaboy.lol" />
+    <meta property="og:title" content="The 🍌☎️ is calling..." />
+    <meta
+      property="og:description"
+      content="Record, reverse, imitate, laugh!"
+    />
+    <meta
+      property="og:image"
+      content="https://yobananaboy.lol/bananaphone_256px.png"
+    />
+
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:url" content="https://yobananaboy.lol">
-    <meta name="twitter:title" content="The 🍌☎️ is calling...">
-    <meta name="twitter:description" content="Record, reverse, imitate, laugh!">
-    <meta name="twitter:image" content="https://yobananaboy.lol/bananaphone_256px.png">
-    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="https://yobananaboy.lol" />
+    <meta name="twitter:title" content="The 🍌☎️ is calling..." />
+    <meta
+      name="twitter:description"
+      content="Record, reverse, imitate, laugh!"
+    />
+    <meta
+      name="twitter:image"
+      content="https://yobananaboy.lol/bananaphone_256px.png"
+    />
+
     <!-- Favicon and Icons -->
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="apple-touch-icon" href="/bananaphone_256px.png">
-    
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/bananaphone_256px.png" />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Background GIF positioned at bottom center -->
+    <div class="background-gif">
+      <img src="/bananas.gif" alt="Dancing bananas" />
+    </div>
+
     <div class="banner">
-        <button id="menuButton" class="menu-button" onclick="window.location.href='index.html'">🍌</button>
-        <h1>Past Games</h1>
+      <button
+        id="menuButton"
+        class="menu-button"
+        onclick="window.location.href='index.html'"
+      >
+        🍌
+      </button>
+      <h1>Past Games</h1>
     </div>
 
     <div class="container">
-        <div class="clips-section">
-            <div id="clipsList"></div>
-            <button id="clearAll" class="clear-all" style="display: none;">Clear All Recordings</button>
-        </div>
+      <div class="clips-section">
+        <div id="clipsList"></div>
+        <button id="clearAll" class="clear-all" style="display: none">
+          Clear All Recordings
+        </button>
+      </div>
     </div>
 
     <script src="utils.js"></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
