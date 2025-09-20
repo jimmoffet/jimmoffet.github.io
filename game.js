@@ -474,7 +474,7 @@ class GameController {
     this.updateUrlWithGameKey();
 
     console.log("Target clip recorded:", targetClip);
-    this.status.textContent = `Tap and try to imitate it! (Turn up volume / turn off silence)`;
+    this.status.textContent = `Tap and try to imitate it! (Turn up volume / off silence)`;
     // this.status.textContent = 'Target recorded! Recording your attempts...';
     this.startOverSection.style.display = "none";
 
