@@ -49,17 +49,17 @@
     <div class="background-gif">
       <img src="/bananas.gif" alt="Dancing bananas" />
     </div>
+
     <div class="banner">
       <button
         id="menuButton"
         class="menu-button history-icon"
-        onclick="window.location.href='history.html'"
+        onclick="window.location.href='/history'"
       ></button>
       <img
         src="/bananaphone_256px.png"
         alt="A picture of a banana talking on a banana-shaped phone"
         style="max-height: 3.2rem"
-        onclick="window.location.href='index.html'"
       />
     </div>
 
@@ -106,6 +106,17 @@
         </div>
       </div>
 
+      <!-- Early Start Over Button (hidden initially, shown after target recording) -->
+      <div
+        id="startOverEarlySection"
+        class="start-over-early-section"
+        style="display: none"
+      >
+        <button id="startOverEarlyButton" class="start-over-early-button">
+          🔄 Start Over
+        </button>
+      </div>
+
       <!-- Finish Button (hidden initially) -->
       <div id="finishSection" class="finish-section" style="display: none">
         <button id="finishButton" class="finish-button">🏁 Finish</button>
@@ -115,9 +126,7 @@
       <div id="resultsSection" class="results-section" style="display: none">
         <div class="results-header">
           <h2>Behold your silliness!</h2>
-          <button id="playAllButton" class="play-all-button">
-            ▶️ Play All
-          </button>
+          <button id="playAllButton" class="play-all-button">▶️ Listen</button>
         </div>
         <div id="gameClipsList" class="game-clips-list"></div>
       </div>
@@ -125,7 +134,7 @@
 
     <!-- Privacy Disclaimer (outside container to avoid JS interference) -->
     <div class="privacy-disclaimer">
-      Your audio is stored only in your browser and never transmitted.
+      Audio is stored only in your browser and never transmitted.
     </div>
 
     <script src="utils.js"></script>
